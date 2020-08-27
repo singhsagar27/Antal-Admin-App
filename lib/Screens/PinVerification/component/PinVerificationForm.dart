@@ -219,7 +219,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 2.0),
+    side: BorderSide(color: Colors.white, width: 0.0),
   );
 
   Route _createPinVerifyRoute() {
