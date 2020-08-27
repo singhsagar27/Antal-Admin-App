@@ -46,6 +46,7 @@ class MyHomePageState extends State<MyHomePage> {
       onPressed: () {
         if (_fbKey.currentState.saveAndValidate()) {
           print(_fbKey.currentState.value);
+          Navigator.of(context).push(_createPinVerificationRoute());
         } else {
           print(_fbKey.currentState.value);
           print('validation failed');
@@ -252,6 +253,25 @@ class MyHomePageState extends State<MyHomePage> {
   Route _createLoginRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => LoginScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _createPinVerificationRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => PinVerificationScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

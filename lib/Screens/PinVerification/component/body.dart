@@ -19,8 +19,8 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           FormTitle(
-            title: "Login",
-            messege: "Please Login to your Account",
+            title: "Verification",
+            messege: "Enter Verification Code Sent to Your Phone",
           ),
           FormBackground(
             child: PinVerificationForm(),
