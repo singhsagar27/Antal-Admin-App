@@ -91,7 +91,6 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(),
                   ],
-                  onChanged: (value) => print(value),
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
@@ -117,7 +116,6 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(),
                   ],
-                  onChanged: (value) => print(value),
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(

@@ -90,7 +90,6 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(),
                   ],
-                  onChanged: (value) => print(value),
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
@@ -116,7 +115,30 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(),
                   ],
-                  onChanged: (value) => print(value),
+                  valueTransformer: (value) => value.toString().trim(),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    text: TextSpan(
+                        text: "Mobile Number",
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w200,
+                          color: PrimaryColor,
+                        )),
+                  ),
+                ),
+                FormBuilderPhoneField(
+                  maxLines: 1,
+                  attribute: 'mobile',
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
