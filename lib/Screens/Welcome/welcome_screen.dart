@@ -16,6 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final emailField = TextField(
       obscureText: false,
       style: style,
@@ -28,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
     final loginButton = MaterialButton(
       height: 50.0,
-      minWidth: 150.0,
+      minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: _selected1 ? Colors.white : PrimaryColor,
@@ -48,7 +49,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
     final registerButton = MaterialButton(
       height: 50.0,
-      minWidth: 150.0,
+      minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: _selected2 ? Colors.white : PrimaryColor,
@@ -74,6 +75,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Expanded(
               child: Container(
+                  width: size.width * 6,
+                  height: size.height * 2.5,
                   decoration: const BoxDecoration(color: Colors.transparent),
                   child: Image.asset(Assets.splashScreenLogo)),
               flex: 1,
@@ -90,22 +93,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       text: "Choose CEO Mitra Community", style: light),
                 ),
                 Container(
-                    padding: EdgeInsets.only(top: 50.0),
+                    padding: EdgeInsets.only(top: size.height * 0.05),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         loginButton,
-                        SizedBox(width: 10),
+                        SizedBox(width: size.width * 0.07),
                         registerButton,
                       ],
                     )),
                 Container(
-                    padding: EdgeInsets.only(top: 50.0),
+                    padding: EdgeInsets.only(top: size.height * 0.03),
                     child: RichText(
                       text: TextSpan(text: "Or", style: light),
                     )),
                 Container(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(top: size.height * 0.02),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
