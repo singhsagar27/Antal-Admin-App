@@ -75,7 +75,31 @@ class MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.centerLeft,
                   child: RichText(
                     text: TextSpan(
-                        text: "Username / Email ID",
+                        text: "Mobile Number",
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w200,
+                          color: PrimaryColor,
+                        )),
+                  ),
+                ),
+                FormBuilderPhoneField(
+                  maxLines: 1,
+                  attribute: 'mobile',
+                  validators: [
+                    FormBuilderValidators.required(),
+                  ],
+                  valueTransformer: (value) => value.toString().trim(),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    text: TextSpan(
+                        text: "Email ID",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
@@ -125,7 +149,7 @@ class MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.centerLeft,
                   child: RichText(
                     text: TextSpan(
-                        text: "Mobile Number",
+                        text: "Confirm Password",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
@@ -134,9 +158,10 @@ class MyHomePageState extends State<MyHomePage> {
                         )),
                   ),
                 ),
-                FormBuilderPhoneField(
+                FormBuilderTextField(
                   maxLines: 1,
-                  attribute: 'mobile',
+                  obscureText: true,
+                  attribute: 'password',
                   validators: [
                     FormBuilderValidators.required(),
                   ],

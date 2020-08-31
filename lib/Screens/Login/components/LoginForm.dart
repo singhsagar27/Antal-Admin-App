@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
-
+import 'package:leads_in/models/login_model.dart';
+import 'package:leads_in/services/auth_service.dart';
 import '../../../assets.dart';
 import '../../screens.dart';
 
@@ -31,7 +32,9 @@ class MyHomePageState extends State<MyHomePage> {
   bool readOnly = false;
   bool showSegmentedControl = true;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,9 +47,51 @@ class MyHomePageState extends State<MyHomePage> {
       color: PrimaryColor,
       textColor: Colors.white,
       padding: buttonPadding,
-      onPressed: () {
+      onPressed: () async {
         if (_fbKey.currentState.saveAndValidate()) {
           print(_fbKey.currentState.value);
+          final note = LoginModel(
+              UserMobile: _usernameController.text,
+              UserPass: _passwordController.text
+          );
+          final result = await Auth.login_api(note);
+          final title = result.error ? 'Error':'Success';
+          result.error ? showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Text(title),
+                content: Text('Something went wrong'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              )
+          )
+              .then((data) {
+            if (result.data) {
+
+              Navigator.of(context).pop();
+
+            }
+          }):showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Text('Successfully Logged In!!!'),
+                content: Text(result.successMessage),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              )
+          );
         } else {
           print(_fbKey.currentState.value);
           print('validation failed');
@@ -75,7 +120,7 @@ class MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.centerLeft,
                   child: RichText(
                     text: TextSpan(
-                        text: "Username / Email ID",
+                        text: "Mobile",
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
@@ -87,10 +132,11 @@ class MyHomePageState extends State<MyHomePage> {
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: false,
-                  attribute: 'email',
+                  attribute: 'mobile',
                   validators: [
                     FormBuilderValidators.required(),
                   ],
+                  controller: _usernameController,
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
@@ -116,6 +162,7 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(),
                   ],
+                  controller: _passwordController,
                   valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
