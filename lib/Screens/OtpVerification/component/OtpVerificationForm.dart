@@ -61,10 +61,6 @@ class MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isKeyboardShowing = MediaQuery.of(context).viewInsets.vertical > 0;
-    if (!isKeyboardShowing) {
-      FocusScope.of(context).requestFocus(_focusNode);
-    }
     Size size = MediaQuery.of(context).size;
 
     final otpVerifyButton = MaterialButton(

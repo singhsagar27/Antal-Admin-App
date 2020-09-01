@@ -31,6 +31,7 @@ class MyHomePageState extends State<MyHomePage> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
+  FocusNode _focusNode;
   GlobalKey<FormBuilderState> _fbKey;
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -50,6 +51,7 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+
     final loginButton = MaterialButton(
       height: 50.0,
       minWidth: 150.0,
@@ -66,47 +68,42 @@ class MyHomePageState extends State<MyHomePage> {
           Navigator.of(context).push(_createLoginRoute());
           final note = LoginModel(
               UserMobile: _usernameController.text,
-              UserPass: _passwordController.text
-          );
+              UserPass: _passwordController.text);
           final result = await Auth.login_api(note);
-          final title = result.error ? 'Error':'Success';
-          result.error ? showDialog(
-              context: context,
-              builder: (_) => AlertDialog(
-                title: Text(title),
-                content: Text('Something went wrong'),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text('Ok'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
-              )
-          )
-              .then((data) {
-            if (result.data) {
-
-              Navigator.of(context).pop();
-
-            }
-          }):showDialog(
-              context: context,
-              builder: (_) => AlertDialog(
-                title: Text('Successfully Logged In!!!'),
-                content: Text(result.successMessage),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text('Ok'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-
-                    },
-                  )
-                ],
-              )
-          );
+          final title = result.error ? 'Error' : 'Success';
+          result.error
+              ? showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text(title),
+                        content: Text('Something went wrong'),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      )).then((data) {
+                  if (result.data) {
+                    Navigator.of(context).pop();
+                  }
+                })
+              : showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text('Successfully Logged In!!!'),
+                        content: Text(result.successMessage),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      ));
         } else {
           print(_fbKey.currentState.value);
           print('validation failed');
@@ -148,6 +145,7 @@ class MyHomePageState extends State<MyHomePage> {
                   maxLines: 1,
                   obscureText: false,
                   attribute: 'mobile',
+                  focusNode: _focusNode,
                   validators: [
                     FormBuilderValidators.required(),
                   ],
@@ -316,7 +314,7 @@ class MyHomePageState extends State<MyHomePage> {
         var curve = Curves.ease;
 
         var tween =
-        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),

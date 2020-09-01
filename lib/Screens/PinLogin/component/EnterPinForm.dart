@@ -115,6 +115,7 @@ class MyHomePageState extends State<MyHomePage> {
                   errorAnimationController: errorController,
                   onCompleted: (v) {
                     print("Completed");
+                    Navigator.of(context).push(_createDashBoardRoute());
                   },
                   onChanged: (value) {
                     print(value);
@@ -146,6 +147,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "1",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("1"),
@@ -157,6 +159,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "2",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("2"),
@@ -168,6 +171,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "3",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("3"),
@@ -185,6 +189,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "4",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("4"),
@@ -196,6 +201,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "5",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("5"),
@@ -207,6 +213,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "6",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("6"),
@@ -224,6 +231,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "7",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("7"),
@@ -235,6 +243,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "8",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("8"),
@@ -246,6 +255,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "9",
                           fontSize: 24,
                           color: PrimaryColor,
+                          borderColor: Colors.white,
                           textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("9"),
@@ -263,7 +273,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "0",
                           fontSize: 24,
                           color: PrimaryColor,
-                          textColor: Colors.white,
+                          borderColor: Colors.white,                          textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("0"),
                           },

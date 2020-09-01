@@ -134,6 +134,7 @@ class MyHomePageState extends State<MyHomePage> {
                   length: 4,
                   textInputType: TextInputType.number,
                   obsecureText: false,
+                  focusNode: AlwaysDisabledFocusNode(),
                   animationType: AnimationType.fade,
                   controller: _controller,
                   validator: (v) {
@@ -404,3 +405,7 @@ class MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
+}
