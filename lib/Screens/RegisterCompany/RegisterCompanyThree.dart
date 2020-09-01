@@ -1,52 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:leads_in/Palette.dart';
-import 'package:leads_in/Screens/Common/form_background.dart';
-import 'package:leads_in/Screens/Common/form_title.dart';
-import '../../../assets.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import '../../Common/background.dart';
 
-class Body extends StatelessWidget {
-  Body({
+import '../../assets.dart';
+
+class RegisterCompanyScreenThree extends StatefulWidget {
+  RegisterCompanyScreenThree({
     Key key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Dashboard();
-  }
+  _RegisterCompanyState createState() => _RegisterCompanyState();
 }
 
-class Dashboard extends StatefulWidget {
-  Dashboard({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  DashboardState createState() {
-    return DashboardState();
-  }
-}
-
-class DashboardState extends State<Dashboard> {
+class _RegisterCompanyState extends State<RegisterCompanyScreenThree> {
   GlobalKey<ScaffoldState> _key;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: buildProfileDrawer(),
       body: SetBody(_key, context),
     );
   }
 
-  //custom widget
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
@@ -131,13 +106,6 @@ class DashboardState extends State<Dashboard> {
                           ),
                         );
                       }),
-                ),
-              ),
-              FormBackground(
-                child: Container(
-                  width: size.width,
-                  height: size.height * 0.3,
-                  child: Text("Hoooo"),
                 ),
               ),
             ],
