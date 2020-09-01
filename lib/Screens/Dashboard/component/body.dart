@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
+
 import '../../../assets.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import '../../Common/background.dart';
+import '../../screens.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -43,6 +45,26 @@ class DashboardState extends State<Dashboard> {
     return Scaffold(
       endDrawer: buildProfileDrawer(),
       body: SetBody(_key, context),
+    );
+  }
+
+  Widget RegisterCompanyButton() {
+    return MaterialButton(
+      height: 50.0,
+      minWidth: 150.0,
+      shape: buttonBorder,
+      //minWidth: MediaQuery.of(context).size.width,
+      color: PrimaryColor,
+      textColor: Colors.white,
+      padding: buttonPadding,
+      onPressed: () {
+        Navigator.of(context).push(_createRegisterCompanyRoute());
+      },
+      child: Text(
+        "Register Company",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 16),
+      ),
     );
   }
 
@@ -135,15 +157,25 @@ class DashboardState extends State<Dashboard> {
               ),
               FormBackground(
                 child: Container(
-                  width: size.width,
-                  height: size.height * 0.3,
-                  child: Text("Hoooo"),
-                ),
+                  alignment: Alignment.bottomCenter,
+                    width: size.width,
+                    height: size.height * 0.3,
+                    child: Wrap(
+                      children: [RegisterCompanyButton()],
+                    )),
               ),
             ],
           )),
     );
   }
+
+  final buttonPadding =
+      new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
+
+  final buttonBorder = new RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(25.0),
+    side: BorderSide(color: Colors.white, width: 0.0),
+  );
 
   final bold = new TextStyle(
       fontFamily: 'Poppins',
@@ -155,5 +187,25 @@ class DashboardState extends State<Dashboard> {
   //Custom drawer
   buildProfileDrawer() {
     return Drawer();
+  }
+
+  Route _createRegisterCompanyRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          RegisterCompanyScreenOne(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 }
