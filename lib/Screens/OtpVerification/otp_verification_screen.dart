@@ -5,13 +5,13 @@ import 'component/body.dart';
 
 
 
-class PinVerificationScreen extends StatefulWidget{
+class OtpVerificationScreen extends StatefulWidget{
 
   @override
-  _PinVerificationScreenState createState() => _PinVerificationScreenState();
+  _OtpVerificationScreenState createState() => _OtpVerificationScreenState();
 }
 
-class _PinVerificationScreenState extends State<PinVerificationScreen> {
+class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

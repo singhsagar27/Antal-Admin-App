@@ -29,7 +29,7 @@ class MyHomePageState extends State<MyHomePage> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  static final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
@@ -296,7 +296,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   Route _createPinVerificationRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => PinVerificationScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => OtpVerificationScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

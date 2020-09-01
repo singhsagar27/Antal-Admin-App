@@ -31,10 +31,21 @@ class MyHomePageState extends State<MyHomePage> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  GlobalKey<FormBuilderState> _fbKey;
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  
+
+  @override
+  void initState() {
+    _fbKey = GlobalKey<FormBuilderState>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -50,6 +61,9 @@ class MyHomePageState extends State<MyHomePage> {
       onPressed: () async {
         if (_fbKey.currentState.saveAndValidate()) {
           print(_fbKey.currentState.value);
+
+          ///Move this to after success login later
+          Navigator.of(context).push(_createLoginRoute());
           final note = LoginModel(
               UserMobile: _usernameController.text,
               UserPass: _passwordController.text
@@ -87,6 +101,7 @@ class MyHomePageState extends State<MyHomePage> {
                     child: Text('Ok'),
                     onPressed: () {
                       Navigator.of(context).pop();
+
                     },
                   )
                 ],
@@ -254,7 +269,7 @@ class MyHomePageState extends State<MyHomePage> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   Navigator.of(context)
-                                      .push(_createRegisterRoute());
+                                      .push(_createSignUpRoute());
                                 },
                             )
                           ],
@@ -273,7 +288,7 @@ class MyHomePageState extends State<MyHomePage> {
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createRegisterRoute() {
+  Route _createSignUpRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -283,6 +298,25 @@ class MyHomePageState extends State<MyHomePage> {
 
         var tween =
             Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _createLoginRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => PinLoginScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),

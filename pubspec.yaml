@@ -16,6 +16,7 @@ dependencies:
   flutter_form_builder: ^3.13.3
   intl: ^0.16.1
   pin_code_fields: ^5.0.1
+  sliding_up_panel: ^1.0.2
 
 
 dev_dependencies:
@@ -83,3 +84,7 @@ flutter:
         - asset: assets/fonts/poppins_black_italic.ttf
           weight: 900
           style: italic
+
+    - family: CenturyGothicRegular
+      fonts:
+        - asset: assets/fonts/CenturyGothicRegular.ttf
