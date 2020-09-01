@@ -51,7 +51,6 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-
     final loginButton = MaterialButton(
       height: 50.0,
       minWidth: 150.0,
@@ -202,8 +201,8 @@ class MyHomePageState extends State<MyHomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Apple")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -211,6 +210,7 @@ class MyHomePageState extends State<MyHomePage> {
                           width: 24,
                           height: 24,
                           fit: BoxFit.cover,
+                          color: Colors.grey,
                         ),
                       ),
                       MaterialButton(
