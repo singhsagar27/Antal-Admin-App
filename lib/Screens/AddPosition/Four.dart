@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import '../../Palette.dart';
@@ -190,15 +191,22 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
+                              FormBuilderRadioGroup(
+                                orientation: GroupedRadioOrientation.wrap,
+                                decoration: InputDecoration(
+                                    labelText: 'Gender Preference'),
                                 attribute: 'genderPreference',
-                                focusNode: _focusNode,
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
+                                validators: [FormBuilderValidators.required()],
+                                options: [
+                                  'Male',
+                                  'Female',
+                                  'Other',
+                                ]
+                                    .map((lang) => FormBuilderFieldOption(
+                                          value: lang,
+                                          child: Text('$lang'),
+                                        ))
+                                    .toList(growable: false),
                               ),
                               SizedBox(
                                 height: 20,
@@ -216,15 +224,21 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
+                              FormBuilderRadioGroup(
+                                orientation: GroupedRadioOrientation.wrap,
+                                decoration: InputDecoration(
+                                    labelText: 'Disability Hiring'),
                                 attribute: 'disabilityHiring',
-                                decoration: const InputDecoration(),
-                                // initialValue: 'Male',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
+                                validators: [FormBuilderValidators.required()],
+                                options: [
+                                  'Yes',
+                                  'No',
+                                ]
+                                    .map((lang) => FormBuilderFieldOption(
+                                          value: lang,
+                                          child: Text('$lang'),
+                                        ))
+                                    .toList(growable: false),
                               ),
                               SizedBox(
                                 height: 20,
@@ -242,15 +256,20 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
+                              FormBuilderCheckboxGroup(
+                                decoration: InputDecoration(
+                                    labelText: 'Type Disability Hiring'),
                                 attribute: 'typeDisabilityHiring',
-                                validators: [
-                                  FormBuilderValidators.required(),
+                                initialValue: ['Dart'],
+                                options: [
+                                  FormBuilderFieldOption(
+                                      value: 'Visual impairment'),
+                                  FormBuilderFieldOption(
+                                      value: 'Hearing impairment'),
+                                  FormBuilderFieldOption(
+                                      value: 'Loco Motor Impairment'),
+                                  FormBuilderFieldOption(value: 'Mutes'),
                                 ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
                               ),
                               SizedBox(
                                 height: 20,
@@ -268,15 +287,20 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
+                              FormBuilderDateRangePicker(
                                 attribute: 'workingDays',
-                                validators: [
-                                  FormBuilderValidators.required(),
+                                firstDate: DateTime(1970),
+                                lastDate: DateTime.now(),
+                                initialValue: [
+                                  DateTime.now().subtract(Duration(days: 30)),
+                                  DateTime.now().subtract(Duration(seconds: 10))
                                 ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
+                                format: DateFormat('yyyy-MM-dd'),
+                                decoration: const InputDecoration(
+                                  labelText: 'Date Range',
+                                  helperText: 'Helper text',
+                                  hintText: 'Hint text',
+                                ),
                               ),
                               SizedBox(
                                 height: 20,
@@ -294,15 +318,16 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
+                              FormBuilderDateTimePicker(
                                 attribute: 'workingTimings',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
+                                inputType: InputType.both,
+                                decoration: const InputDecoration(
+                                  labelText: 'Working Timings',
+                                ),
+                                validator: (val) => null,
+                                initialTime: TimeOfDay(hour: 8, minute: 0),
+                                // initialValue: DateTime.now(),
+                                // readonly: true,
                               ),
                               SizedBox(
                                 height: 20,
@@ -326,6 +351,7 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                 attribute: 'noOfVacancy',
                                 validators: [
                                   FormBuilderValidators.required(),
+                                  FormBuilderValidators.numeric(),
                                 ],
                                 valueTransformer: (value) =>
                                     value.toString().trim(),
@@ -346,15 +372,16 @@ class _RegisterCompanyState extends State<AddPositionScreenFour> {
                                       )),
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
+                              FormBuilderDateTimePicker(
                                 attribute: 'expectedClosureDate',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
+                                inputType: InputType.both,
+                                decoration: const InputDecoration(
+                                  labelText: 'Expected closure date',
+                                ),
+                                validator: (val) => null,
+                                initialTime: TimeOfDay(hour: 8, minute: 0),
+                                // initialValue: DateTime.now(),
+                                // readonly: true,
                               ),
                               SizedBox(
                                 height: 20,

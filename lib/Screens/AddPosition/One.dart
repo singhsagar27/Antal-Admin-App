@@ -190,15 +190,22 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
+                                FormBuilderDropdown(
                                   attribute: 'clientName',
-                                  focusNode: _focusNode,
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('Client Name'),
                                   validators: [
-                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -259,8 +266,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text:
-                                            "Excepted Educational Qualification",
+                                        text: "Excepted Educational Qualification",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
