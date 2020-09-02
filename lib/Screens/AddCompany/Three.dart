@@ -6,8 +6,8 @@ import 'package:leads_in/Screens/Dashboard/component/body.dart';
 import '../../Palette.dart';
 import '../../assets.dart';
 
-class RegisterCompanyScreenThree extends StatefulWidget {
-  RegisterCompanyScreenThree({
+class AddCompanyScreenThree extends StatefulWidget {
+  AddCompanyScreenThree({
     Key key,
   }) : super(key: key);
 
@@ -15,7 +15,7 @@ class RegisterCompanyScreenThree extends StatefulWidget {
   _RegisterCompanyState createState() => _RegisterCompanyState();
 }
 
-class _RegisterCompanyState extends State<RegisterCompanyScreenThree> {
+class _RegisterCompanyState extends State<AddCompanyScreenThree> {
   GlobalKey<ScaffoldState> _key;
   FocusNode _focusNode;
   var genderOptions = ['Male', 'Female', 'Other'];

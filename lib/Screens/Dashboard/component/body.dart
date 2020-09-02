@@ -192,7 +192,7 @@ class DashboardState extends State<Dashboard> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          RegisterCompanyScreenOne(),
+          AddCompanyScreenOne(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

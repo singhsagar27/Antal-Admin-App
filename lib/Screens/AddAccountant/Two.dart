@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:leads_in/Screens/RegisterCompany/RegisterCompanyThree.dart';
 
 import '../../Palette.dart';
 import '../../assets.dart';
+import '../screens.dart';
 
-class RegisterCompanyScreenTwo extends StatefulWidget {
-  RegisterCompanyScreenTwo({
+class AddAccountantScreenTwo extends StatefulWidget {
+  AddAccountantScreenTwo({
     Key key,
   }) : super(key: key);
 
@@ -15,7 +15,7 @@ class RegisterCompanyScreenTwo extends StatefulWidget {
   _RegisterCompanyState createState() => _RegisterCompanyState();
 }
 
-class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
+class _RegisterCompanyState extends State<AddAccountantScreenTwo> {
   GlobalKey<ScaffoldState> _key;
   FocusNode _focusNode;
   var genderOptions = ['Male', 'Female', 'Other'];
@@ -442,7 +442,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          RegisterCompanyScreenThree(),
+          AddAccountantScreenThree(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

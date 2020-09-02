@@ -6,8 +6,8 @@ import '../../Palette.dart';
 import '../../assets.dart';
 import '../screens.dart';
 
-class RegisterCompanyScreenOne extends StatefulWidget {
-  RegisterCompanyScreenOne({
+class AddRecruiterScreenOne extends StatefulWidget {
+  AddRecruiterScreenOne({
     Key key,
   }) : super(key: key);
 
@@ -15,7 +15,7 @@ class RegisterCompanyScreenOne extends StatefulWidget {
   _RegisterCompanyState createState() => _RegisterCompanyState();
 }
 
-class _RegisterCompanyState extends State<RegisterCompanyScreenOne> {
+class _RegisterCompanyState extends State<AddRecruiterScreenOne> {
   GlobalKey<ScaffoldState> _key;
   FocusNode _focusNode;
   var genderOptions = ['Male', 'Female', 'Other'];
@@ -343,7 +343,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenOne> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          RegisterCompanyScreenTwo(),
+          AddCompanyScreenTwo(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
