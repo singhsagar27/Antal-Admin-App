@@ -51,101 +51,101 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Container(
-          width: size.width,
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: new EdgeInsets.only(
-                      left: size.width * 0.05,
-                      right: size.width * 0.05,
-                      top: size.width * 0.05,
-                      bottom: size.width * 0.05),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            child: IconButton(
-                              icon: Icon(Icons.arrow_back, color: Colors.white),
-                              onPressed: () => Navigator.of(context).pop(),
-                            ),
+        width: size.width,
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Padding(
+                padding: new EdgeInsets.only(
+                    left: size.width * 0.05,
+                    right: size.width * 0.05,
+                    top: size.width * 0.05,
+                    bottom: size.width * 0.05),
+                child: Column(
+                  children: [
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          child: IconButton(
+                            icon: Icon(Icons.arrow_back, color: Colors.white),
+                            onPressed: () => Navigator.of(context).pop(),
                           ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(text: "Back", style: bold),
-                            ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: RichText(
+                            text: TextSpan(text: "Back", style: bold),
                           ),
-                          Expanded(
-                            child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Image.asset(
-                                  Assets.profileMenu,
-                                  width: 36,
-                                  height: 36,
-                                )),
+                        ),
+                        Expanded(
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Image.asset(
+                                Assets.profileMenu,
+                                width: 36,
+                                height: 36,
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 30.0,
+                          backgroundImage: AssetImage(Assets.profile),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        SizedBox(width: 20),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: RichText(
+                            text: TextSpan(
+                                text: "Register Company",
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 26.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500 // bol
+                                    )),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          CircleAvatar(
-                            radius: 30.0,
-                            backgroundImage: AssetImage(Assets.profile),
-                            backgroundColor: Colors.transparent,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: <Widget>[],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: RichText(
+                            text: TextSpan(
+                                text: "1. Contact Details",
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400 // bol
+                                    )),
                           ),
-                          SizedBox(width: 20),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "Register Company",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 26.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500 // bol
-                                      )),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: <Widget>[],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "1. Basic Information",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400 // bol
-                                      )),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              Expanded(
-                  child: Container(
+            ),
+            Expanded(
+              child: Container(
                 color: Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -165,7 +165,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Name",
+                                        text: "Company Email",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -176,7 +176,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                 ),
                                 FormBuilderTextField(
                                   maxLines: 1,
-                                  attribute: 'companyName',
+                                  attribute: 'companyEmail',
                                   focusNode: _focusNode,
                                   validators: [
                                     FormBuilderValidators.required(),
@@ -191,7 +191,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Entry Type",
+                                        text: "Company Contact Number",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -200,22 +200,16 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderDropdown(
-                                  attribute: 'entryType',
+                                FormBuilderPhoneField(
+                                  attribute: 'companyPhone',
                                   decoration: const InputDecoration(),
                                   // initialValue: 'Male',
-                                  hint: Text('Entry Type'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
                                   // isExpanded: false,
-                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -224,7 +218,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Size",
+                                        text: "Ceo Name",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -236,7 +230,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                 FormBuilderTextField(
                                   maxLines: 1,
                                   obscureText: false,
-                                  attribute: 'size',
+                                  attribute: 'ceoName',
                                   validators: [
                                     FormBuilderValidators.required(),
                                   ],
@@ -250,7 +244,7 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Industry Type",
+                                        text: "Ceo Number",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -259,22 +253,16 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderDropdown(
-                                  attribute: 'industryType',
+                                FormBuilderPhoneField(
+                                  attribute: 'ceoNumber',
                                   decoration: const InputDecoration(),
                                   // initialValue: 'Male',
-                                  hint: Text('Industry Type'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
                                   // isExpanded: false,
-                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -283,7 +271,34 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Key Products",
+                                        text: "HR Contact Number",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderPhoneField(
+                                  attribute: 'hrNumber',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  validators: [
+                                    FormBuilderValidators.required()
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                  // isExpanded: false,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Client Location",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -293,10 +308,91 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                                   ),
                                 ),
                                 FormBuilderTextField(
-                                  maxLines: 4,
-                                  attribute: 'keyProducts',
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'streetOne',
                                   validators: [
                                     FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'streetTwo',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "City",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'city',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "State",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'state',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Pin",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'pinCode',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.numeric(),
                                   ],
                                   valueTransformer: (value) =>
                                       value.toString().trim(),
@@ -315,9 +411,11 @@ class _RegisterCompanyState extends State<RegisterCompanyScreenTwo> {
                     ],
                   ),
                 ),
-              )),
-            ],
-          )),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
