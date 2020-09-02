@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:leads_in/Screens/AddPosition/Four.dart';
-import 'package:leads_in/Screens/Dashboard/component/body.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import '../../Palette.dart';
 import '../../assets.dart';
+import '../screens.dart';
 
-class AddPositionScreenThree extends StatefulWidget {
-  AddPositionScreenThree({
+class AddPositionScreenFour extends StatefulWidget {
+  AddPositionScreenFour({
     Key key,
   }) : super(key: key);
 
@@ -17,7 +16,7 @@ class AddPositionScreenThree extends StatefulWidget {
   _RegisterCompanyState createState() => _RegisterCompanyState();
 }
 
-class _RegisterCompanyState extends State<AddPositionScreenThree> {
+class _RegisterCompanyState extends State<AddPositionScreenFour> {
   GlobalKey<ScaffoldState> _key;
   FocusNode _focusNode;
   var genderOptions = ['Male', 'Female', 'Other'];
@@ -120,7 +119,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                       height: 20,
                     ),
                     StepsIndicator(
-                      selectedStep: 2,
+                      selectedStep: 3,
                       nbSteps: 4,
                       selectedStepColorOut: Colors.white,
                       selectedStepColorIn: Colors.white,
@@ -146,7 +145,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                             text: TextSpan(
-                                text: "3. Key Responsibilities and Key Skills",
+                                text: "4. Perks and Details of Position",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -182,7 +181,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Responsibility 1",
+                                      text: "Gender Preference",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -193,7 +192,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                               ),
                               FormBuilderTextField(
                                 maxLines: 1,
-                                attribute: 'keyResponsibility1',
+                                attribute: 'genderPreference',
                                 focusNode: _focusNode,
                                 validators: [
                                   FormBuilderValidators.required(),
@@ -208,7 +207,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Responsibility 2",
+                                      text: "Disability Hiring",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -218,9 +217,9 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 ),
                               ),
                               FormBuilderTextField(
-                                maxLines: 1,
-                                attribute: 'keyResponsibility2',
-                                focusNode: _focusNode,
+                                attribute: 'disabilityHiring',
+                                decoration: const InputDecoration(),
+                                // initialValue: 'Male',
                                 validators: [
                                   FormBuilderValidators.required(),
                                 ],
@@ -234,7 +233,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Responsibility 3",
+                                      text: "Type Disability Hiring",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -245,8 +244,8 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                               ),
                               FormBuilderTextField(
                                 maxLines: 1,
-                                attribute: 'keyResponsibility3',
-                                focusNode: _focusNode,
+                                obscureText: false,
+                                attribute: 'typeDisabilityHiring',
                                 validators: [
                                   FormBuilderValidators.required(),
                                 ],
@@ -260,7 +259,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Skill 1",
+                                      text: "Working Days",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -271,8 +270,8 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                               ),
                               FormBuilderTextField(
                                 maxLines: 1,
-                                attribute: 'keySkill1',
-                                focusNode: _focusNode,
+                                obscureText: false,
+                                attribute: 'workingDays',
                                 validators: [
                                   FormBuilderValidators.required(),
                                 ],
@@ -286,7 +285,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Skill 2",
+                                      text: "Working Timings",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -297,8 +296,8 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                               ),
                               FormBuilderTextField(
                                 maxLines: 1,
-                                attribute: 'keySkill2',
-                                focusNode: _focusNode,
+                                obscureText: false,
+                                attribute: 'workingTimings',
                                 validators: [
                                   FormBuilderValidators.required(),
                                 ],
@@ -312,7 +311,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                 alignment: Alignment.centerLeft,
                                 child: RichText(
                                   text: TextSpan(
-                                      text: "Key Skill 3",
+                                      text: "No. of Vacancies",
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
@@ -323,8 +322,60 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                               ),
                               FormBuilderTextField(
                                 maxLines: 1,
-                                attribute: 'keySkill3',
-                                focusNode: _focusNode,
+                                obscureText: false,
+                                attribute: 'noOfVacancy',
+                                validators: [
+                                  FormBuilderValidators.required(),
+                                ],
+                                valueTransformer: (value) =>
+                                    value.toString().trim(),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Expected closure date",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w200,
+                                        color: PrimaryColor,
+                                      )),
+                                ),
+                              ),
+                              FormBuilderTextField(
+                                maxLines: 1,
+                                obscureText: false,
+                                attribute: 'expectedClosureDate',
+                                validators: [
+                                  FormBuilderValidators.required(),
+                                ],
+                                valueTransformer: (value) =>
+                                    value.toString().trim(),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: "Special Request",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w200,
+                                        color: PrimaryColor,
+                                      )),
+                                ),
+                              ),
+                              FormBuilderTextField(
+                                maxLines: 1,
+                                obscureText: false,
+                                attribute: 'specialRequest',
                                 validators: [
                                   FormBuilderValidators.required(),
                                 ],
@@ -375,7 +426,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          AddPositionScreenFour(),
+          DashboardScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

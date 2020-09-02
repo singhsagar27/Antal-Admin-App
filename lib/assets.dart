@@ -8,6 +8,7 @@ class Assets {
   static const String otherPageLogo = '${_images}other_page_logo.png';
   static const String profile = '${_images}profile.jpg';
   static const String profileMenu = '${_images}profile_menu.png';
+  static const String bank = '${_images}bank.png';
 
 
 

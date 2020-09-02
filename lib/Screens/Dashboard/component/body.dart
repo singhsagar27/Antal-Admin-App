@@ -1,13 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
-import 'package:leads_in/Screens/Common/form_background.dart';
-import 'package:leads_in/Screens/Common/form_title.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../assets.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import '../../Common/background.dart';
 import '../../screens.dart';
 
 class Body extends StatelessWidget {
@@ -60,6 +56,7 @@ class DashboardState extends State<Dashboard> {
 
     return Material(
       child: SlidingUpPanel(
+        minHeight: 150,
         header: Container(
             width: size.width,
             child: Align(
@@ -100,13 +97,75 @@ class DashboardState extends State<Dashboard> {
 
   Widget BottomSheet(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: Container(
+          alignment: Alignment.topCenter,
+          width: size.width,
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: RichText(
+                  text: TextSpan(
+                    text: "Add",
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+              Row(
+                children: [SheetIcon(context)],
+              ),
+              RegisterCompanyButton()
+            ],
+          )),
+    );
+  }
+
+  Widget SheetIcon(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-        alignment: Alignment.bottomCenter,
-        width: size.width,
-        height: size.height * 0.3,
-        child: Wrap(
-          children: [RegisterCompanyButton()],
-        ));
+      width: size.width * 0.25,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                radius: 24.0,
+                backgroundImage: AssetImage(Assets.bank),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
+            decoration: new BoxDecoration(
+              shape: BoxShape.circle,
+              border: new Border.all(
+                color: Colors.black,
+                width: 1.0,
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: RichText(
+              text: TextSpan(
+                text: "Title",
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   //custom widget
@@ -152,39 +211,41 @@ class DashboardState extends State<Dashboard> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      if (index == 0) {
-                        // return the header
-                        return new Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 20),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Recent Updates",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 32.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700 // bold
-                                      ),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 150),
+                  child: ListView.builder(
+                      itemCount: 10 + 1,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          // return the header
+                          return new Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: "Recent Updates",
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 32.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700 // bold
+                                        ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        );
-                      } else {
+                            ],
+                          );
+                        }
+                        index -= 1;
                         return GestureDetector(
                           onTap: () {},
-                          // 6
                           child: Container(
                             child: ListTile(
                               title: RichText(
                                   text: TextSpan(
-                                text: "title",
+                                text: "title $index",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 18.0,
@@ -208,9 +269,10 @@ class DashboardState extends State<Dashboard> {
                             ),
                           ),
                         );
-                      }
-                      // 5
-                    }),
+
+                        // 5
+                      }),
+                ),
               ),
             ],
           )),

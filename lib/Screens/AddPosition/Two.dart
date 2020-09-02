@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import '../../Palette.dart';
 import '../../assets.dart';
@@ -103,7 +104,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                             text: TextSpan(
-                                text: "Register Company",
+                                text: "Add Position",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 26.0,
@@ -115,13 +116,28 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    Row(
-                      children: <Widget>[],
+                    StepsIndicator(
+                      selectedStep: 1,
+                      nbSteps: 4,
+                      selectedStepColorOut: Colors.white,
+                      selectedStepColorIn: Colors.white,
+                      doneStepColor: Colors.white,
+                      unselectedStepColorOut: Colors.white,
+                      unselectedStepColorIn: PrimaryColor,
+                      doneLineColor: Colors.white,
+                      undoneLineColor: Colors.grey,
+                      isHorizontal: true,
+                      lineLength: 120,
+                      donelineThickness: 2,
+                      doneStepSize: 15,
+                      unselectedStepSize: 15,
+                      selectedStepSize: 17,
+                      selectedStepBorderSize: 1,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Row(
                       children: <Widget>[
@@ -129,7 +145,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                             text: TextSpan(
-                                text: "1. Contact Details",
+                                text: "2. Experience and Salary Details",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -165,7 +181,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Email",
+                                        text: "Years of Experience (Min)",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -174,42 +190,22 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  attribute: 'companyEmail',
-                                  focusNode: _focusNode,
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Company Contact Number",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderPhoneField(
-                                  attribute: 'companyPhone',
+                                FormBuilderDropdown(
+                                  attribute: 'minYearExp',
                                   decoration: const InputDecoration(),
                                   // initialValue: 'Male',
+                                  hint: Text('Years of Experience'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
                                   // isExpanded: false,
+                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -218,7 +214,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Ceo Name",
+                                        text: "In Month",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -227,42 +223,22 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'ceoName',
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Ceo Number",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderPhoneField(
-                                  attribute: 'ceoNumber',
+                                FormBuilderDropdown(
+                                  attribute: 'minMonthExp',
                                   decoration: const InputDecoration(),
                                   // initialValue: 'Male',
+                                  hint: Text('In Month'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
                                   // isExpanded: false,
+                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -271,7 +247,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "HR Contact Number",
+                                        text: "Years of Experience (Max)",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -280,16 +256,22 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderPhoneField(
-                                  attribute: 'hrNumber',
+                                FormBuilderDropdown(
+                                  attribute: 'maxYearExp',
                                   decoration: const InputDecoration(),
                                   // initialValue: 'Male',
+                                  hint: Text('Years of Experience'),
                                   validators: [
                                     FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
                                   // isExpanded: false,
+                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -298,7 +280,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Client Location",
+                                        text: "In Month",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -307,31 +289,31 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'streetOne',
+                                FormBuilderDropdown(
+                                  attribute: 'maxMonthExp',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('In Month'),
                                   validators: [
-                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'streetTwo',
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                SizedBox(
+                                  height: 20,
                                 ),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "City",
+                                        text: "Salary Offered (Min)",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -340,21 +322,31 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'city',
+                                FormBuilderDropdown(
+                                  attribute: 'minSalaryLac',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('In Lac'),
                                   validators: [
-                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
+                                ),
+                                SizedBox(
+                                  height: 20,
                                 ),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "State",
+                                        text: "In Thousand",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -363,21 +355,31 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'state',
+                                FormBuilderDropdown(
+                                  attribute: 'minSalaryThousand',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('In Month'),
                                   validators: [
-                                    FormBuilderValidators.required(),
+                                    FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
+                                ),
+                                SizedBox(
+                                  height: 20,
                                 ),
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Pin",
+                                        text: "Salary Offered (Max)",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -386,16 +388,55 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'pinCode',
+                                FormBuilderDropdown(
+                                  attribute: 'maxSalaryLac',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('In Lac'),
                                   validators: [
-                                    FormBuilderValidators.required(),
-                                    FormBuilderValidators.numeric(),
+                                    FormBuilderValidators.required()
                                   ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "In Thousand",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderDropdown(
+                                  attribute: 'maxSalaryThousand',
+                                  decoration: const InputDecoration(),
+                                  // initialValue: 'Male',
+                                  hint: Text('In Month'),
+                                  validators: [
+                                    FormBuilderValidators.required()
+                                  ],
+                                  items: genderOptions
+                                      .map((gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text('$gender'),
+                                  ))
+                                      .toList(),
+                                  // isExpanded: false,
+                                  allowClear: true,
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -442,7 +483,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          AddAccountantScreenThree(),
+          AddPositionScreenThree(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

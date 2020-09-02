@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import '../../Palette.dart';
 import '../../assets.dart';
@@ -115,13 +116,28 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                         ],
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
-                      Row(
-                        children: <Widget>[],
+                      StepsIndicator(
+                        selectedStep: 0,
+                        nbSteps: 4,
+                        selectedStepColorOut: Colors.white,
+                        selectedStepColorIn: Colors.white,
+                        doneStepColor: Colors.white,
+                        unselectedStepColorOut: Colors.white,
+                        unselectedStepColorIn: PrimaryColor,
+                        doneLineColor: Colors.white,
+                        undoneLineColor: Colors.grey,
+                        isHorizontal: true,
+                        lineLength: 120,
+                        donelineThickness: 2,
+                        doneStepSize: 15,
+                        unselectedStepSize: 15,
+                        selectedStepSize: 17,
+                        selectedStepBorderSize: 1,
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       Row(
                         children: <Widget>[
@@ -200,22 +216,15 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                         )),
                                   ),
                                 ),
-                                FormBuilderDropdown(
-                                  attribute: 'entryType',
-                                  decoration: const InputDecoration(),
-                                  // initialValue: 'Male',
-                                  hint: Text('Entry Type'),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  attribute: 'departmentName',
+                                  focusNode: _focusNode,
                                   validators: [
-                                    FormBuilderValidators.required()
+                                    FormBuilderValidators.required(),
                                   ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
-                                  // isExpanded: false,
-                                  allowClear: true,
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -224,7 +233,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Size",
+                                        text: "Position Name",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -236,7 +245,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                 FormBuilderTextField(
                                   maxLines: 1,
                                   obscureText: false,
-                                  attribute: 'size',
+                                  attribute: 'positionName',
                                   validators: [
                                     FormBuilderValidators.required(),
                                   ],
@@ -250,40 +259,8 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Industry Type",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderDropdown(
-                                  attribute: 'industryType',
-                                  decoration: const InputDecoration(),
-                                  // initialValue: 'Male',
-                                  hint: Text('Industry Type'),
-                                  validators: [
-                                    FormBuilderValidators.required()
-                                  ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
-                                  // isExpanded: false,
-                                  allowClear: true,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Key Products",
+                                        text:
+                                            "Excepted Educational Qualification",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -293,13 +270,121 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   ),
                                 ),
                                 FormBuilderTextField(
-                                  maxLines: 4,
-                                  attribute: 'keyProducts',
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'qualification',
                                   validators: [
                                     FormBuilderValidators.required(),
                                   ],
                                   valueTransformer: (value) =>
                                       value.toString().trim(),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Target Industry",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'targetIndustry',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Position Type",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'positionType',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Position Level",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'positionLevel',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: "Position Location",
+                                        style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w200,
+                                          color: PrimaryColor,
+                                        )),
+                                  ),
+                                ),
+                                FormBuilderTextField(
+                                  maxLines: 1,
+                                  obscureText: false,
+                                  attribute: 'positionLocation',
+                                  validators: [
+                                    FormBuilderValidators.required(),
+                                  ],
+                                  valueTransformer: (value) =>
+                                      value.toString().trim(),
+                                ),
+                                SizedBox(
+                                  height: 20,
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -343,7 +428,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          AddAccountantScreenTwo(),
+          AddPositionScreenTwo(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
