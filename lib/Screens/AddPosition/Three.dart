@@ -5,8 +5,9 @@ import 'package:leads_in/Screens/AddPosition/Four.dart';
 import 'package:leads_in/Screens/Dashboard/component/body.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
-import '../../Palette.dart';
-import '../../assets.dart';
+import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/screens.dart';
+import 'package:leads_in/assets.dart';
 
 class AddPositionScreenThree extends StatefulWidget {
   AddPositionScreenThree({

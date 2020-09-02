@@ -35,6 +35,8 @@ class MyHomePageState extends State<MyHomePage> {
   GlobalKey<FormBuilderState> _fbKey;
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  bool _mobileHasError = false;
+  bool _passwordHasError = false;
 
   @override
   void initState() {
@@ -125,60 +127,66 @@ class MyHomePageState extends State<MyHomePage> {
                   left: size.width * 0.10,
                   right: size.width * 0.10,
                   top: size.height * 0.05,
-                  bottom: size.height * 0.05),
+                  bottom: size.height * 0.02),
               child: Column(children: <Widget>[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Mobile",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
-                ),
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: false,
                   attribute: 'mobile',
                   focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Mobile',
+                    //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
+                  ),
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _mobileHasError = !_fbKey
+                          .currentState.fields['mobile'].currentState
+                          .validate();
+                    });
+                  },
+                  valueTransformer: (text) {
+                    return text == null ? null : text.toString().trim();
+                  },
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(errorText: "Please Enter Mobile"),
+                    FormBuilderValidators.numeric(),
                   ],
                   controller: _usernameController,
-                  valueTransformer: (value) => value.toString().trim(),
+                  keyboardType: TextInputType.number,
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Password",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
+                  height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: true,
                   attribute: 'password',
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                  ),
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _passwordHasError = !_fbKey
+                          .currentState.fields['password'].currentState
+                          .validate();
+                    });
+                  },
+                  valueTransformer: (text) {
+                    return text == null ? null : text.toString().trim();
+                  },
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Password"),
                   ],
                   controller: _passwordController,
-                  valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -194,7 +202,7 @@ class MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +236,7 @@ class MyHomePageState extends State<MyHomePage> {
                       ),
                     ]),
                 SizedBox(
-                  height: 15,
+                  height: size.height * 0.01,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -238,42 +246,38 @@ class MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: size.height * 0.01,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: "Don't Have Account? ",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w200,
-                                color: PrimaryColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "SignUp",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w500,
-                                color: PrimaryColor,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context)
-                                      .push(_createSignUpRoute());
-                                },
-                            )
-                          ],
+                Container(
+                  child: RichText(
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: "Don't Have Account? ",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w200,
+                            color: PrimaryColor,
+                          ),
                         ),
-                      ),
-                    ]),
+                        TextSpan(
+                          text: "SignUp",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w500,
+                            color: PrimaryColor,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.of(context).push(_createSignUpRoute());
+                            },
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ]))),
     );
   }
