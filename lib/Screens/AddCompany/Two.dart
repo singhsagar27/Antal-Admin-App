@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:leads_in/widgets/StepsIndicator.dart';
+
 
 import '../../Palette.dart';
 import '../../assets.dart';
@@ -115,13 +117,28 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    Row(
-                      children: <Widget>[],
+                    StepsIndicator(
+                      selectedStep: 1,
+                      nbSteps: 3,
+                      selectedStepColorOut: Colors.white,
+                      selectedStepColorIn: Colors.white,
+                      doneStepColor: Colors.white,
+                      unselectedStepColorOut: Colors.white,
+                      unselectedStepColorIn: PrimaryColor,
+                      doneLineColor: Colors.white,
+                      undoneLineColor: Colors.grey,
+                      isHorizontal: true,
+                      lineLength: 120,
+                      donelineThickness: 2,
+                      doneStepSize: 15,
+                      unselectedStepSize: 15,
+                      selectedStepSize: 17,
+                      selectedStepBorderSize: 1,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Row(
                       children: <Widget>[

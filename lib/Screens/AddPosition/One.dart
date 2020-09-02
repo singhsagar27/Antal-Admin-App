@@ -103,7 +103,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                             alignment: Alignment.centerLeft,
                             child: RichText(
                               text: TextSpan(
-                                  text: "Register Company",
+                                  text: "Add Position",
                                   style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 26.0,
@@ -129,7 +129,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                             alignment: Alignment.centerLeft,
                             child: RichText(
                               text: TextSpan(
-                                  text: "1. Basic Information",
+                                  text: "1. Position Details",
                                   style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 14.0,
@@ -165,7 +165,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Name",
+                                        text: "Client Name",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
@@ -176,7 +176,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                 ),
                                 FormBuilderTextField(
                                   maxLines: 1,
-                                  attribute: 'companyName',
+                                  attribute: 'clientName',
                                   focusNode: _focusNode,
                                   validators: [
                                     FormBuilderValidators.required(),
@@ -191,7 +191,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Company Entry Type",
+                                        text: "Department Name",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,

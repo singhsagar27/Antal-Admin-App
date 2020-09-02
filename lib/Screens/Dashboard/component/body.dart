@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../assets.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
@@ -34,6 +35,7 @@ class Dashboard extends StatefulWidget {
 
 class DashboardState extends State<Dashboard> {
   GlobalKey<ScaffoldState> _key;
+  final myController = TextEditingController();
 
   @override
   void initState() {
@@ -41,10 +43,38 @@ class DashboardState extends State<Dashboard> {
   }
 
   @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      endDrawer: buildProfileDrawer(),
-      body: SetBody(_key, context),
+    Size size = MediaQuery.of(context).size;
+    BorderRadiusGeometry radius = BorderRadius.only(
+      topLeft: Radius.circular(24.0),
+      topRight: Radius.circular(24.0),
+    );
+
+    return Material(
+      child: SlidingUpPanel(
+        header: Container(
+            width: size.width,
+            child: Align(
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.keyboard_arrow_up,
+                size: 30,
+              ),
+            )),
+        borderRadius: radius,
+        panel: BottomSheet(_key, context),
+        body: Scaffold(
+          body: SetBody(_key, context),
+        ),
+      ),
     );
   }
 
@@ -68,6 +98,17 @@ class DashboardState extends State<Dashboard> {
     );
   }
 
+  Widget BottomSheet(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+        alignment: Alignment.bottomCenter,
+        width: size.width,
+        height: size.height * 0.3,
+        child: Wrap(
+          children: [RegisterCompanyButton()],
+        ));
+  }
+
   //custom widget
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -79,7 +120,7 @@ class DashboardState extends State<Dashboard> {
               Container(
                 child: Padding(
                   padding: new EdgeInsets.only(
-                      left: size.width * 0.10,
+                      left: size.width * 0.05,
                       right: size.width * 0.05,
                       top: size.width * 0.05,
                       bottom: size.width * 0.05),
@@ -111,58 +152,65 @@ class DashboardState extends State<Dashboard> {
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        // 5
+                child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        // return the header
+                        return new Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: RichText(
+                                text: TextSpan(
+                                  text: "Recent Updates",
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 32.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700 // bold
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      } else {
                         return GestureDetector(
                           onTap: () {},
                           // 6
                           child: Container(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              // 7
-                              child: ListTile(
-                                title: RichText(
-                                    text: TextSpan(
-                                  text: "title",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                                subtitle: RichText(
-                                    text: TextSpan(
-                                  text: "Messssage",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                                leading: Image.asset(
-                                  Assets.profile,
-                                  width: 30,
-                                  height: 30,
-                                ),
+                            child: ListTile(
+                              title: RichText(
+                                  text: TextSpan(
+                                text: "title",
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              )),
+                              subtitle: RichText(
+                                  text: TextSpan(
+                                text: "Messssage",
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              )),
+                              leading: Image.asset(
+                                Assets.profile,
+                                width: 30,
+                                height: 30,
                               ),
                             ),
                           ),
                         );
-                      }),
-                ),
-              ),
-              FormBackground(
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                    width: size.width,
-                    height: size.height * 0.3,
-                    child: Wrap(
-                      children: [RegisterCompanyButton()],
-                    )),
+                      }
+                      // 5
+                    }),
               ),
             ],
           )),
