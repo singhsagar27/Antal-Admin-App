@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
-import 'package:leads_in/Screens/Login/components/LoginForm.dart';
+import 'SetPinForm.dart';
 
 import '../../Common/background.dart';
-
-import 'PinVerificationForm.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -19,11 +17,11 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           FormTitle(
-            title: "Verification",
-            messege: "Enter Verification Code Sent to Your Phone",
+            title: "Set Pin",
+            messege: "Enter / Re-enter Pin",
           ),
           FormBackground(
-            child: PinVerificationForm(),
+            child: SetPin(),
           )
         ],
       ),

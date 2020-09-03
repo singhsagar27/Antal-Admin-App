@@ -29,12 +29,13 @@ class MyHomePageState extends State<MyHomePage> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  FocusNode _focusNode;
+  static final GlobalKey<FormBuilderState> _fbKey =
+      GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     final registerButton = MaterialButton(
       height: 50.0,
       minWidth: 150.0,
@@ -87,6 +88,7 @@ class MyHomePageState extends State<MyHomePage> {
                 FormBuilderPhoneField(
                   maxLines: 1,
                   attribute: 'mobile',
+                  focusNode: _focusNode,
                   validators: [
                     FormBuilderValidators.required(),
                   ],
@@ -296,7 +298,8 @@ class MyHomePageState extends State<MyHomePage> {
 
   Route _createPinVerificationRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => PinVerificationScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          OtpVerificationScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

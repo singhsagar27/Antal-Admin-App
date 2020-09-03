@@ -9,8 +9,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../assets.dart';
 import '../../screens.dart';
 
-class PinVerificationForm extends StatelessWidget {
-  PinVerificationForm({
+class OtpVerificationForm extends StatelessWidget {
+  OtpVerificationForm({
     Key key,
   }) : super(key: key);
 
@@ -32,12 +32,10 @@ class MyHomePageState extends State<MyHomePage> {
   bool autoValidate = true;
   bool readOnly = false;
   FocusNode _focusNode;
-  bool _isButtonTapped = false;
   bool showSegmentedControl = true;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   StreamController<ErrorAnimationType> errorController;
-  TextEditingController controller = TextEditingController();
   bool hasError = false;
   String currentText;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -63,13 +61,9 @@ class MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isKeyboardShowing = MediaQuery.of(context).viewInsets.vertical > 0;
-    if (!isKeyboardShowing) {
-      FocusScope.of(context).requestFocus(_focusNode);
-    }
     Size size = MediaQuery.of(context).size;
 
-    final pinVerifyButton = MaterialButton(
+    final otpVerifyButton = MaterialButton(
       height: 50.0,
       minWidth: 150.0,
       shape: buttonBorder,
@@ -80,6 +74,8 @@ class MyHomePageState extends State<MyHomePage> {
       onPressed: () {
         if (_fbKey.currentState.saveAndValidate()) {
           print(currentText);
+          Navigator.of(context)
+              .push(_createPinSetRoute());
           setState(() {
             hasError = false;
           });
@@ -186,7 +182,7 @@ class MyHomePageState extends State<MyHomePage> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   Navigator.of(context)
-                                      .push(_createPinVerifyRoute());
+                                      .push(_createSignUpRoute());
                                 },
                             )
                           ],
@@ -200,7 +196,7 @@ class MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    pinVerifyButton,
+                    otpVerifyButton,
                   ],
                 ),
               ]))),
@@ -209,7 +205,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   final PinText = new TextStyle(
       fontFamily: 'Poppins',
-      fontSize: 16.0,
+      fontSize: 20.0,
       color: PrimaryColor,
       fontWeight: FontWeight.w700 // bold
       );
@@ -222,7 +218,7 @@ class MyHomePageState extends State<MyHomePage> {
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createPinVerifyRoute() {
+  Route _createSignUpRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -232,6 +228,24 @@ class MyHomePageState extends State<MyHomePage> {
 
         var tween =
             Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+  Route _createPinSetRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SetPinScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),

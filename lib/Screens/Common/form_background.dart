@@ -17,11 +17,7 @@ class FormBackground extends StatelessWidget {
             topLeft: const Radius.circular(30.0),
             topRight: const Radius.circular(30.0),
           )),
-      child: Column(
-        children: <Widget>[
-          child,
-        ],
-      ),
+      child: child,
     );
   }
 }
