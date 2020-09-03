@@ -146,7 +146,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                             text: TextSpan(
-                                text: "1. Contact Details",
+                                text: "2. Contact Details",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
@@ -461,7 +461,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
       pageBuilder: (context, animation, secondaryAnimation) =>
           AddCompanyScreenThree(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(0.0, 1.0);
+        var begin = Offset(1.0, 0.0);
         var end = Offset.zero;
         var curve = Curves.ease;
 

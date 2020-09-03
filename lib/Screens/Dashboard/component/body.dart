@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
+import 'package:leads_in/widgets/CustomAppBar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../assets.dart';
@@ -57,7 +58,9 @@ class DashboardState extends State<Dashboard> {
     return Material(
       child: SlidingUpPanel(
         minHeight: size.height * 0.25,
-        maxHeight: size.height * 0.75,
+        maxHeight: size.height * 0.70,
+        snapPoint: 0.45,
+        backdropTapClosesPanel: false,
         header: Container(
             width: size.width,
             child: Align(
@@ -70,10 +73,53 @@ class DashboardState extends State<Dashboard> {
         borderRadius: radius,
         panel: BottomSheet(_key, context),
         body: Scaffold(
+          appBar: Appbar(context),
           body: SetBody(_key, context),
         ),
       ),
     );
+  }
+
+  Widget Appbar(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return CustomAppBar(
+        height: 150,
+        child: SafeArea(
+          child: Container(
+            child: Padding(
+              padding: new EdgeInsets.only(
+                  left: size.width * 0.05,
+                  right: size.width * 0.05,
+                  top: size.width * 0.05,
+                  bottom: size.width * 0.05),
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage: AssetImage(Assets.profile),
+                    backgroundColor: Colors.transparent,
+                  ),
+                  SizedBox(width: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: RichText(
+                      text: TextSpan(text: "title", style: bold),
+                    ),
+                  ),
+                  Expanded(
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          Assets.profileMenu,
+                          width: 36,
+                          height: 36,
+                        )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 
   Widget RegisterCompanyButton() {
@@ -124,51 +170,95 @@ class DashboardState extends State<Dashboard> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: size.width * 0.05, right: size.width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SheetIcon(context, "Company", Assets.bank),
-                    SheetIcon(context, "Recruiter", Assets.bank),
-                    SheetIcon(context, "Sales Partner", Assets.bank),
-                    SheetIcon(context, "Accounts Person", Assets.bank),
-                  ],
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: size.width * 0.05, right: size.width * 0.05),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SheetIcon(context, "Company", Assets.bank),
+                            SheetIcon(context, "Recruiter", Assets.bank),
+                            SheetIcon(context, "Sales Partner", Assets.bank),
+                            SheetIcon(context, "Accounts Person", Assets.bank),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        height: size.height * 0.02,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: size.width * 0.05, right: size.width * 0.05),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SheetIcon(context, "Track Lead", Assets.bank),
+                            SheetIcon(context, "Add Lead", Assets.bank),
+                            SheetIcon(context, "Assign Lead", Assets.bank),
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        height: size.height * 0.02,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: RichText(
+                          text: TextSpan(
+                            text: "View",
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 18.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.02,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: size.width * 0.05, right: size.width * 0.05),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SheetIcon(
+                                context, "Connected Companies", Assets.bank),
+                            SheetIcon(context, "Sales Partner", Assets.bank),
+                            SheetIcon(context, "Accounts Person", Assets.bank),
+                            SheetIcon(
+                                context, "Revenue Generated", Assets.bank),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      RegisterCompanyButton(),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Divider(height: size.height*0.02,),
-
-              Padding(
-                padding: EdgeInsets.only(
-                    left: size.width * 0.05, right: size.width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SheetIcon(context, "Company", Assets.bank),
-                    SheetIcon(context, "Recruiter", Assets.bank),
-                    SheetIcon(context, "Sales Partner", Assets.bank),
-                  ],
-                ),
-              ),
-              Divider(height: size.height*0.02,),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: size.width * 0.05, right: size.width * 0.05),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SheetIcon(context, "Company", Assets.bank),
-                    SheetIcon(context, "Recruiter", Assets.bank),
-                    SheetIcon(context, "Sales Partner", Assets.bank),
-                    SheetIcon(context, "Accounts Person", Assets.bank),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: size.height * 0.01,
-              ),
-              RegisterCompanyButton()
             ],
           )),
     );
@@ -178,7 +268,7 @@ class DashboardState extends State<Dashboard> {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * 0.20,
-      height: size.height * 0.17,
+      height: size.width * 0.27,
       alignment: Alignment.topCenter,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,8 +277,8 @@ class DashboardState extends State<Dashboard> {
         children: [
           Container(
             alignment: Alignment.topCenter,
-            width: size.width*0.15,
-            height: size.width*0.15,
+            width: size.width * 0.15,
+            height: size.width * 0.15,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(100),
@@ -209,13 +299,13 @@ class DashboardState extends State<Dashboard> {
                 children: [
                   Ink.image(
                     image: AssetImage(assetName),
-                    width: size.width*0.09,
-                    height: size.width*0.09,
+                    width: size.width * 0.09,
+                    height: size.width * 0.09,
                     fit: BoxFit.contain,
                   ),
                   InkWell(
                     onTap: () {
-                      /* ... */
+                      gotoScreen(title);
                     },
                   ),
                 ],
@@ -245,40 +335,6 @@ class DashboardState extends State<Dashboard> {
           width: size.width,
           child: Column(
             children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: new EdgeInsets.only(
-                      left: size.width * 0.05,
-                      right: size.width * 0.05,
-                      top: size.width * 0.05,
-                      bottom: size.width * 0.05),
-                  child: Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 30.0,
-                        backgroundImage: AssetImage(Assets.profile),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      SizedBox(width: 20),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: RichText(
-                          text: TextSpan(text: "title", style: bold),
-                        ),
-                      ),
-                      Expanded(
-                        child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Image.asset(
-                              Assets.profileMenu,
-                              width: 36,
-                              height: 36,
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: size.height * 0.25),
@@ -366,6 +422,44 @@ class DashboardState extends State<Dashboard> {
   //Custom drawer
   buildProfileDrawer() {
     return Drawer();
+  }
+
+  gotoScreen(String name) {
+
+    switch (name) {
+      case "Recruiter":
+        {
+          // statements;
+          Navigator.of(context).push(_createRoute(AddRecruiterScreenOne()));
+        }
+        break;
+
+      case "Company":
+        {
+          //statements;
+          Navigator.of(context).push(_createRoute(AddCompanyScreenOne()));
+        }
+        break;
+    }
+  }
+
+  Route _createRoute(Widget Screen) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => Screen,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   Route _createRegisterCompanyRoute() {

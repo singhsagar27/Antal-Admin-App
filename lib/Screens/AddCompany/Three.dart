@@ -41,6 +41,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
       padding: buttonPadding,
       onPressed: () {
         Navigator.of(context).push(_createRegisterCompanyRoute());
+
       },
       child: Text(
         "Register Company",
@@ -147,7 +148,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                           alignment: Alignment.centerLeft,
                           child: RichText(
                             text: TextSpan(
-                                text: "1. Billing Details",
+                                text: "3. Billing Details",
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontSize: 14.0,
