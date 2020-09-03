@@ -40,6 +40,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     final registerButton = MaterialButton(
       height: 50.0,
       minWidth: 150.0,

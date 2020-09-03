@@ -56,7 +56,8 @@ class DashboardState extends State<Dashboard> {
 
     return Material(
       child: SlidingUpPanel(
-        minHeight: 150,
+        minHeight: size.height * 0.25,
+        maxHeight: size.height * 0.75,
         header: Container(
             width: size.width,
             child: Align(
@@ -98,11 +99,14 @@ class DashboardState extends State<Dashboard> {
   Widget BottomSheet(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 40),
+      padding: EdgeInsets.only(top: size.height * 0.04),
       child: Container(
           alignment: Alignment.topCenter,
           width: size.width,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Align(
                 alignment: Alignment.topCenter,
@@ -117,8 +121,52 @@ class DashboardState extends State<Dashboard> {
                   ),
                 ),
               ),
-              Row(
-                children: [SheetIcon(context)],
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: size.width * 0.05, right: size.width * 0.05),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SheetIcon(context, "Company", Assets.bank),
+                    SheetIcon(context, "Recruiter", Assets.bank),
+                    SheetIcon(context, "Sales Partner", Assets.bank),
+                    SheetIcon(context, "Accounts Person", Assets.bank),
+                  ],
+                ),
+              ),
+              Divider(height: size.height*0.02,),
+
+              Padding(
+                padding: EdgeInsets.only(
+                    left: size.width * 0.05, right: size.width * 0.05),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SheetIcon(context, "Company", Assets.bank),
+                    SheetIcon(context, "Recruiter", Assets.bank),
+                    SheetIcon(context, "Sales Partner", Assets.bank),
+                  ],
+                ),
+              ),
+              Divider(height: size.height*0.02,),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: size.width * 0.05, right: size.width * 0.05),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SheetIcon(context, "Company", Assets.bank),
+                    SheetIcon(context, "Recruiter", Assets.bank),
+                    SheetIcon(context, "Sales Partner", Assets.bank),
+                    SheetIcon(context, "Accounts Person", Assets.bank),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.01,
               ),
               RegisterCompanyButton()
             ],
@@ -126,43 +174,64 @@ class DashboardState extends State<Dashboard> {
     );
   }
 
-  Widget SheetIcon(BuildContext context) {
+  Widget SheetIcon(BuildContext context, String title, String assetName) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.25,
+      width: size.width * 0.20,
+      height: size.height * 0.17,
+      alignment: Alignment.topCenter,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                radius: 24.0,
-                backgroundImage: AssetImage(Assets.bank),
-                backgroundColor: Colors.transparent,
-              ),
-            ),
-            decoration: new BoxDecoration(
-              shape: BoxShape.circle,
-              border: new Border.all(
-                color: Colors.black,
-                width: 1.0,
-              ),
-            ),
-          ),
-          Align(
             alignment: Alignment.topCenter,
-            child: RichText(
-              text: TextSpan(
-                text: "Title",
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500),
+            width: size.width*0.15,
+            height: size.width*0.15,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(100),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                ),
+              ],
+            ),
+            child: Material(
+              clipBehavior: Clip.hardEdge,
+              shape: CircleBorder(),
+              color: Colors.transparent,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Ink.image(
+                    image: AssetImage(assetName),
+                    width: size.width*0.09,
+                    height: size.width*0.09,
+                    fit: BoxFit.contain,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      /* ... */
+                    },
+                  ),
+                ],
               ),
             ),
           ),
+          SizedBox(
+            height: size.height * 0.015,
+          ),
+          Flexible(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+          )
         ],
       ),
     );
@@ -212,7 +281,7 @@ class DashboardState extends State<Dashboard> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 150),
+                  padding: EdgeInsets.only(bottom: size.height * 0.25),
                   child: ListView.builder(
                       itemCount: 10 + 1,
                       itemBuilder: (context, index) {

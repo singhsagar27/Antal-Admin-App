@@ -26,3 +26,5 @@ export 'AddPosition//One.dart';
 export 'AddPosition/Two.dart';
 export 'AddPosition/Three.dart';
 export 'AddPosition/Four.dart';
+
+export 'Companies/CompanyList.dart';
