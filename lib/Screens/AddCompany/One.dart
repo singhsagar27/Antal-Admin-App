@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:leads_in/widgets/StepsIndicator.dart';
-
-
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/screens.dart';
 import 'package:leads_in/assets.dart';
+import 'package:leads_in/widgets/CustomAppBar.dart';
+import 'package:leads_in/widgets/StepsIndicator.dart';
 
 class AddCompanyScreenOne extends StatefulWidget {
   AddCompanyScreenOne({
@@ -25,6 +24,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: Appbar(context),
       body: SetBody(_key, context),
     );
   }
@@ -49,292 +49,295 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
     );
   }
 
+  Widget Appbar(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return CustomAppBar(
+        height: 260,
+        child: SafeArea(
+          child: Container(
+            width: size.width,
+            child: Padding(
+              padding:
+                  new EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+              child: Column(
+                children: [
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back, color: Colors.white),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(text: "Back", style: bold),
+                        ),
+                      ),
+                      Expanded(
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Image.asset(
+                              Assets.profileMenu,
+                              width: 36,
+                              height: 36,
+                            )),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 30.0,
+                        backgroundImage: AssetImage(Assets.profile),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      SizedBox(width: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                              text: "Register Company",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 26.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500 // bol
+                                  )),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  StepsIndicator(
+                    selectedStep: 0,
+                    nbSteps: 3,
+                    selectedStepColorOut: Colors.white,
+                    selectedStepColorIn: Colors.white,
+                    doneStepColor: Colors.white,
+                    unselectedStepColorOut: Colors.white,
+                    unselectedStepColorIn: PrimaryColor,
+                    doneLineColor: Colors.white,
+                    undoneLineColor: Colors.grey,
+                    isHorizontal: true,
+                    lineLength: 120,
+                    donelineThickness: 2,
+                    doneStepSize: 15,
+                    unselectedStepSize: 15,
+                    selectedStepSize: 17,
+                    selectedStepBorderSize: 1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                              text: "1. Basic Information",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400 // bol
+                                  )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
+
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Container(
-          width: size.width,
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: new EdgeInsets.only(
-                      left: size.width * 0.05,
-                      right: size.width * 0.05,
-                      top: size.width * 0.05,
-                      bottom: size.width * 0.05),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            child: IconButton(
-                              icon: Icon(Icons.arrow_back, color: Colors.white),
-                              onPressed: () => Navigator.of(context).pop(),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(text: "Back", style: bold),
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Image.asset(
-                                  Assets.profileMenu,
-                                  width: 36,
-                                  height: 36,
-                                )),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          CircleAvatar(
-                            radius: 30.0,
-                            backgroundImage: AssetImage(Assets.profile),
-                            backgroundColor: Colors.transparent,
-                          ),
-                          SizedBox(width: 20),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                  text: "Register Company",
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 26.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500 // bol
-                                      )),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      StepsIndicator(
-                          selectedStep: 0,
-                          nbSteps: 3,
-                          selectedStepColorOut: Colors.white,
-                          selectedStepColorIn: Colors.white,
-                          doneStepColor: Colors.white,
-                          unselectedStepColorOut: Colors.white,
-                          unselectedStepColorIn: PrimaryColor,
-                          doneLineColor: Colors.white,
-                          undoneLineColor: Colors.grey,
-                          isHorizontal: true,
-                          lineLength: 120,
-                          donelineThickness: 2,
-                          doneStepSize: 15,
-                          unselectedStepSize: 15,
-                          selectedStepSize: 17,
-                          selectedStepBorderSize: 1,
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
+    return Container(
+      width: size.width,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: Colors.white,
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  FormBuilder(
+                    key: globalKey,
+                    child: Padding(
+                      padding: new EdgeInsets.only(
+                          left: size.width * 0.10,
+                          right: size.width * 0.10,
+                          top: size.height * 0.05,
+                          bottom: size.height * 0.05),
+                      child: Column(
                         children: <Widget>[
                           Align(
                             alignment: Alignment.centerLeft,
                             child: RichText(
                               text: TextSpan(
-                                  text: "1. Basic Information",
+                                  text: "Company Name",
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400 // bol
-                                      )),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200,
+                                    color: PrimaryColor,
+                                  )),
                             ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            attribute: 'companyName',
+                            focusNode: _focusNode,
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "Company Entry Type",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200,
+                                    color: PrimaryColor,
+                                  )),
+                            ),
+                          ),
+                          FormBuilderDropdown(
+                            attribute: 'entryType',
+                            decoration: const InputDecoration(),
+                            // initialValue: 'Male',
+                            hint: Text('Entry Type'),
+                            validators: [FormBuilderValidators.required()],
+                            items: genderOptions
+                                .map((gender) => DropdownMenuItem(
+                                      value: gender,
+                                      child: Text('$gender'),
+                                    ))
+                                .toList(),
+                            // isExpanded: false,
+                            allowClear: true,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "Company Size",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200,
+                                    color: PrimaryColor,
+                                  )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'size',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "Industry Type",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200,
+                                    color: PrimaryColor,
+                                  )),
+                            ),
+                          ),
+                          FormBuilderDropdown(
+                            attribute: 'industryType',
+                            decoration: const InputDecoration(),
+                            // initialValue: 'Male',
+                            hint: Text('Industry Type'),
+                            validators: [FormBuilderValidators.required()],
+                            items: genderOptions
+                                .map((gender) => DropdownMenuItem(
+                                      value: gender,
+                                      child: Text('$gender'),
+                                    ))
+                                .toList(),
+                            // isExpanded: false,
+                            allowClear: true,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "Key Products",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w200,
+                                    color: PrimaryColor,
+                                  )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 4,
+                            attribute: 'keyProducts',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              RegisterCompanyButton(),
+                            ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-              Expanded(
-                  child: Container(
-                color: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: <Widget>[
-                      FormBuilder(
-                          key: globalKey,
-                          child: Padding(
-                              padding: new EdgeInsets.only(
-                                  left: size.width * 0.10,
-                                  right: size.width * 0.10,
-                                  top: size.height * 0.05,
-                                  bottom: size.height * 0.05),
-                              child: Column(children: <Widget>[
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Company Name",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  attribute: 'companyName',
-                                  focusNode: _focusNode,
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Company Entry Type",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderDropdown(
-                                  attribute: 'entryType',
-                                  decoration: const InputDecoration(),
-                                  // initialValue: 'Male',
-                                  hint: Text('Entry Type'),
-                                  validators: [
-                                    FormBuilderValidators.required()
-                                  ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
-                                  // isExpanded: false,
-                                  allowClear: true,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Company Size",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderTextField(
-                                  maxLines: 1,
-                                  obscureText: false,
-                                  attribute: 'size',
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Industry Type",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderDropdown(
-                                  attribute: 'industryType',
-                                  decoration: const InputDecoration(),
-                                  // initialValue: 'Male',
-                                  hint: Text('Industry Type'),
-                                  validators: [
-                                    FormBuilderValidators.required()
-                                  ],
-                                  items: genderOptions
-                                      .map((gender) => DropdownMenuItem(
-                                            value: gender,
-                                            child: Text('$gender'),
-                                          ))
-                                      .toList(),
-                                  // isExpanded: false,
-                                  allowClear: true,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                        text: "Key Products",
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
-                                        )),
-                                  ),
-                                ),
-                                FormBuilderTextField(
-                                  maxLines: 4,
-                                  attribute: 'keyProducts',
-                                  validators: [
-                                    FormBuilderValidators.required(),
-                                  ],
-                                  valueTransformer: (value) =>
-                                      value.toString().trim(),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    RegisterCompanyButton(),
-                                  ],
-                                ),
-                              ]))),
-                    ],
-                  ),
-                ),
-              )),
-            ],
-          )),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

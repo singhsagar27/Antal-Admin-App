@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: WelcomeScreen(),
       routes: <String, WidgetBuilder>{
         '/LoginScreen': (BuildContext context) => new LoginScreen(),
-        '/': (BuildContext context) => new WelcomeScreen(),
+        '/WelcomeScreen': (BuildContext context) => new WelcomeScreen(),
         '/SignUpScreen': (BuildContext context) => new SignUpScreen(),
         '/PinLoginScreen': (BuildContext context) => new PinLoginScreen(),
         '/DashboardScreen': (BuildContext context) => new DashboardScreen(),

@@ -1,11 +1,11 @@
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/screens.dart';
+import 'package:leads_in/assets.dart';
 import 'package:leads_in/widgets/CustomAppBar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-import '../../../assets.dart';
-import '../../screens.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -83,43 +83,58 @@ class DashboardState extends State<Dashboard> {
   Widget Appbar(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomAppBar(
-        height: 150,
-        child: SafeArea(
-          child: Container(
-            child: Padding(
-              padding: new EdgeInsets.only(
-                  left: size.width * 0.05,
-                  right: size.width * 0.05,
-                  top: size.width * 0.05,
-                  bottom: size.width * 0.05),
-              child: Row(
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage: AssetImage(Assets.profile),
-                    backgroundColor: Colors.transparent,
+      height: 130,
+      child: SafeArea(
+        child: Container(
+          child: Padding(
+            padding:
+                new EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            child: Row(
+              children: <Widget>[
+                CircularProfileAvatar(
+                  '',
+                  child: Image.asset(
+                    Assets.profile,
+                    fit: BoxFit.cover,
                   ),
-                  SizedBox(width: 20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: RichText(
-                      text: TextSpan(text: "title", style: bold),
+                  radius: 30,
+                  backgroundColor: Colors.transparent,
+                  borderWidth: 0,
+                  initialsText: Text(
+                    "AD",
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  ),
+                  borderColor: Colors.transparent,
+                  elevation: 2.0,
+                  foregroundColor: Colors.brown.withOpacity(0.5),
+                  cacheImage: true,
+                  onTap: () {
+                    gotoScreen("Profile");
+                  },
+                ),
+                SizedBox(width: 20),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    text: TextSpan(text: "My Name", style: bold),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Image.asset(
+                      Assets.profileMenu,
+                      width: 36,
+                      height: 36,
                     ),
                   ),
-                  Expanded(
-                    child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset(
-                          Assets.profileMenu,
-                          width: 36,
-                          height: 36,
-                        )),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget RegisterCompanyButton() {
@@ -425,7 +440,6 @@ class DashboardState extends State<Dashboard> {
   }
 
   gotoScreen(String name) {
-
     switch (name) {
       case "Recruiter":
         {
@@ -437,7 +451,13 @@ class DashboardState extends State<Dashboard> {
       case "Company":
         {
           //statements;
-          Navigator.of(context).push(_createRoute(AddCompanyScreenOne()));
+          Navigator.of(context).push(_createRoute(CompanyListScreen()));
+        }
+        break;
+      case "Profile":
+        {
+          //statements;
+          Navigator.of(context).push(_createRoute(ProfileScreen()));
         }
         break;
     }

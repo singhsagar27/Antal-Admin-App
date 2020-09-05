@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:leads_in/Screens/Dashboard/component/body.dart';
+import 'package:leads_in/widgets/CustomAppBar.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
-
 
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/screens.dart';
@@ -26,6 +25,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: Appbar(context),
       body: SetBody(_key, context),
     );
   }
@@ -41,7 +41,6 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
       padding: buttonPadding,
       onPressed: () {
         Navigator.of(context).push(_createRegisterCompanyRoute());
-
       },
       child: Text(
         "Register Company",
@@ -51,6 +50,117 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
     );
   }
 
+  Widget Appbar(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return CustomAppBar(
+        height: 260,
+        child: SafeArea(
+          child: Container(
+            width: size.width,
+            child: Padding(
+              padding:
+                  new EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+              child: Column(
+                children: [
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back, color: Colors.white),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(text: "Back", style: bold),
+                        ),
+                      ),
+                      Expanded(
+                        child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Image.asset(
+                              Assets.profileMenu,
+                              width: 36,
+                              height: 36,
+                            )),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 30.0,
+                        backgroundImage: AssetImage(Assets.profile),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      SizedBox(width: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                              text: "Register Company",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 26.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500 // bol
+                                  )),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  StepsIndicator(
+                    selectedStep: 2,
+                    nbSteps: 3,
+                    selectedStepColorOut: Colors.white,
+                    selectedStepColorIn: Colors.white,
+                    doneStepColor: Colors.white,
+                    unselectedStepColorOut: Colors.white,
+                    unselectedStepColorIn: PrimaryColor,
+                    doneLineColor: Colors.white,
+                    undoneLineColor: Colors.grey,
+                    isHorizontal: true,
+                    lineLength: 120,
+                    donelineThickness: 2,
+                    doneStepSize: 15,
+                    unselectedStepSize: 15,
+                    selectedStepSize: 17,
+                    selectedStepBorderSize: 1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                              text: "3. Billing Details",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400 // bol
+                                  )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
+
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
@@ -58,296 +168,198 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
         width: size.width,
         child: Column(
           children: <Widget>[
-            Container(
-              child: Padding(
-                padding: new EdgeInsets.only(
-                    left: size.width * 0.05,
-                    right: size.width * 0.05,
-                    top: size.width * 0.05,
-                    bottom: size.width * 0.05),
-                child: Column(
-                  children: [
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back, color: Colors.white),
-                            onPressed: () => Navigator.of(context).pop(),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: RichText(
-                            text: TextSpan(text: "Back", style: bold),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Image.asset(
-                                Assets.profileMenu,
-                                width: 36,
-                                height: 36,
-                              )),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 30.0,
-                          backgroundImage: AssetImage(Assets.profile),
-                          backgroundColor: Colors.transparent,
-                        ),
-                        SizedBox(width: 20),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: RichText(
-                            text: TextSpan(
-                                text: "Register Company",
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 26.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500 // bol
-                                    )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    StepsIndicator(
-                      selectedStep: 2,
-                      nbSteps: 3,
-                      selectedStepColorOut: Colors.white,
-                      selectedStepColorIn: Colors.white,
-                      doneStepColor: Colors.white,
-                      unselectedStepColorOut: Colors.white,
-                      unselectedStepColorIn: PrimaryColor,
-                      doneLineColor: Colors.white,
-                      undoneLineColor: Colors.grey,
-                      isHorizontal: true,
-                      lineLength: 120,
-                      donelineThickness: 2,
-                      doneStepSize: 15,
-                      unselectedStepSize: 15,
-                      selectedStepSize: 17,
-                      selectedStepBorderSize: 1,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: RichText(
-                            text: TextSpan(
-                                text: "3. Billing Details",
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 14.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400 // bol
-                                    )),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
             Expanded(
                 child: Container(
               color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ListView(
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    FormBuilder(
-                        key: globalKey,
-                        child: Padding(
-                            padding: new EdgeInsets.only(
-                                left: size.width * 0.10,
-                                right: size.width * 0.10,
-                                top: size.height * 0.05,
-                                bottom: size.height * 0.05),
-                            child: Column(children: <Widget>[
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "GST Number",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  FormBuilder(
+                    key: globalKey,
+                    child: Padding(
+                      padding: new EdgeInsets.only(
+                          left: size.width * 0.10,
+                          right: size.width * 0.10,
+                          top: size.height * 0.05,
+                          bottom: size.height * 0.05),
+                      child: Column(
+                        children: <Widget>[
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "GST Number",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                attribute: 'gstNumber',
-                                focusNode: _focusNode,
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "PAN Number",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            attribute: 'gstNumber',
+                            focusNode: _focusNode,
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "PAN Number",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                attribute: 'panNumber',
-                                decoration: const InputDecoration(),
-                                // initialValue: 'Male',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "Client Location",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            attribute: 'panNumber',
+                            decoration: const InputDecoration(),
+                            // initialValue: 'Male',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Client Location",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
-                                attribute: 'streetOne',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
-                                attribute: 'streetTwo',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "City",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'streetOne',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'streetTwo',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "City",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
-                                attribute: 'city',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "State",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'city',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "State",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
-                                attribute: 'state',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RichText(
-                                  text: TextSpan(
-                                      text: "Pin",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
-                                      )),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'state',
+                            validators: [
+                              FormBuilderValidators.required(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Pin",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w200,
+                                  color: PrimaryColor,
                                 ),
                               ),
-                              FormBuilderTextField(
-                                maxLines: 1,
-                                obscureText: false,
-                                attribute: 'pinCode',
-                                validators: [
-                                  FormBuilderValidators.required(),
-                                  FormBuilderValidators.numeric(),
-                                ],
-                                valueTransformer: (value) =>
-                                    value.toString().trim(),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  RegisterCompanyButton(),
-                                ],
-                              ),
-                            ]))),
-                  ],
-                ),
+                            ),
+                          ),
+                          FormBuilderTextField(
+                            maxLines: 1,
+                            obscureText: false,
+                            attribute: 'pinCode',
+                            validators: [
+                              FormBuilderValidators.required(),
+                              FormBuilderValidators.numeric(),
+                            ],
+                            valueTransformer: (value) =>
+                                value.toString().trim(),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              RegisterCompanyButton(),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             )),
           ],
@@ -378,7 +390,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
 
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => Dashboard(),
+      pageBuilder: (context, animation, secondaryAnimation) => DashboardScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
