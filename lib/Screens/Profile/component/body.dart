@@ -53,7 +53,11 @@ class ProfileListState extends State<ProfileList> {
             padding:
                 new EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: Row(
-              children: <Widget>[],
+              children: <Widget>[
+                Container(
+                    //Close Button
+                    ),
+              ],
             ),
           ),
         ),
@@ -66,16 +70,34 @@ class ProfileListState extends State<ProfileList> {
     return SafeArea(
       child: Container(
         width: size.width,
+        alignment: Alignment.topCenter,
         child: Stack(
           children: <Widget>[
+            Positioned(
+              top: 50,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                //Data
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(25.0),
+                    topRight: const Radius.circular(25.0),
+                  ),
+                ),
+              ),
+            ),
             Container(
+              alignment: Alignment.topCenter,
               child: CircularProfileAvatar(
                 '',
                 child: Image.asset(
                   Assets.profile,
                   fit: BoxFit.cover,
                 ),
-                radius: 30,
+                radius: 50,
                 backgroundColor: Colors.transparent,
                 borderWidth: 0,
                 initialsText: Text(
@@ -92,9 +114,6 @@ class ProfileListState extends State<ProfileList> {
               ),
               //Image
             ),
-            Container(
-                //Data
-                ),
           ],
         ),
       ),
