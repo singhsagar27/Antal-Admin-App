@@ -69,9 +69,29 @@ class ProfileListState extends State<ProfileList> {
         child: Stack(
           children: <Widget>[
             Container(
-
-                //Image
+              child: CircularProfileAvatar(
+                '',
+                child: Image.asset(
+                  Assets.profile,
+                  fit: BoxFit.cover,
                 ),
+                radius: 30,
+                backgroundColor: Colors.transparent,
+                borderWidth: 0,
+                initialsText: Text(
+                  "AD",
+                  style: TextStyle(fontSize: 40, color: Colors.white),
+                ),
+                borderColor: Colors.transparent,
+                elevation: 2.0,
+                foregroundColor: Colors.brown.withOpacity(0.5),
+                cacheImage: true,
+                onTap: () {
+                  print("Profile");
+                },
+              ),
+              //Image
+            ),
             Container(
                 //Data
                 ),
