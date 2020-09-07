@@ -257,16 +257,30 @@ class ProfileListState extends State<ProfileList> {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  RichText(
-                                    text: TextSpan(
-                                      text: "Email ID :",
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.grey,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w300,
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: RichText(
+                                          text: TextSpan(
+                                            text: "Email ID :",
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.grey,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Image.asset(
+                                          Assets.profile,
+                                          width: 24,
+                                          height: 24,
+                                        ),
+                                      )
+                                    ],
                                   ),
                                   RichText(
                                     text: TextSpan(
