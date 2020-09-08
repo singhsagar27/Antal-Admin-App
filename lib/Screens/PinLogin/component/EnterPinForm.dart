@@ -73,7 +73,6 @@ class MyHomePageState extends State<MyHomePage> {
         }
         print(_controller.text);
       });
-
     }
 
     return Container(
@@ -129,6 +128,7 @@ class MyHomePageState extends State<MyHomePage> {
                     //but you can show anything you want here, like your pop up saying wrong paste format or etc
                     return true;
                   },
+                  appContext: context,
                 ),
                 SizedBox(
                   height: 20,
@@ -273,7 +273,8 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "0",
                           fontSize: 24,
                           color: PrimaryColor,
-                          borderColor: Colors.white,                          textColor: Colors.white,
+                          borderColor: Colors.white,
+                          textColor: Colors.white,
                           onPressed: () => {
                             incrementCounter("0"),
                           },

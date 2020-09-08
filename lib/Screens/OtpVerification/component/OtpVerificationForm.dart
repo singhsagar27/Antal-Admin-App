@@ -74,8 +74,7 @@ class MyHomePageState extends State<MyHomePage> {
       onPressed: () {
         if (_fbKey.currentState.saveAndValidate()) {
           print(currentText);
-          Navigator.of(context)
-              .push(_createPinSetRoute());
+          Navigator.of(context).push(_createPinSetRoute());
           setState(() {
             hasError = false;
           });
@@ -151,6 +150,7 @@ class MyHomePageState extends State<MyHomePage> {
                     //but you can show anything you want here, like your pop up saying wrong paste format or etc
                     return true;
                   },
+                  appContext: context,
                 ),
                 SizedBox(
                   height: 40,
@@ -236,6 +236,7 @@ class MyHomePageState extends State<MyHomePage> {
       },
     );
   }
+
   Route _createPinSetRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => SetPinScreen(),
@@ -245,7 +246,7 @@ class MyHomePageState extends State<MyHomePage> {
         var curve = Curves.ease;
 
         var tween =
-        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),

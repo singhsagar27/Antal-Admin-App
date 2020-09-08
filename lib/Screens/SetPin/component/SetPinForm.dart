@@ -169,6 +169,7 @@ class MyHomePageState extends State<MyHomePage> {
                     //but you can show anything you want here, like your pop up saying wrong paste format or etc
                     return true;
                   },
+                  appContext: context,
                 ),
                 SizedBox(
                   height: 20,
