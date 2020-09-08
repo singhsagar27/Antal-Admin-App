@@ -53,7 +53,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
   Widget Appbar(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomAppBar(
-        height: 260,
+        height: 270,
         child: SafeArea(
           child: Container(
             width: size.width,
@@ -390,7 +390,8 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
 
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => DashboardScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          DashboardScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

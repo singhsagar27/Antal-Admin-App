@@ -52,7 +52,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
   Widget Appbar(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomAppBar(
-        height: 260,
+        height: 270,
         child: SafeArea(
           child: Container(
             width: size.width,

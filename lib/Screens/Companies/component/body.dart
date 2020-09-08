@@ -210,147 +210,51 @@ class CompanyListState extends State<CompanyList> {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (context, index) {
-                return Container(
-                  padding: EdgeInsets.fromLTRB(10, 00, 10, 10),
-                  width: double.maxFinite,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    elevation: 2,
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(7),
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: Image.asset(
-                                    Assets.bank,
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: "Recruiter Name",
-                                      style: TextStyle(
-                                        color: Colors.blue,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                return GestureDetector(
+                  onTap: () {
+                    print("Card Clicked");
+                  },
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 00, 10, 10),
+                    width: double.maxFinite,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      elevation: 2,
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.all(7),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(8),
+                                    child: Image.asset(
+                                      Assets.bank,
+                                      width: 24,
+                                      height: 24,
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  child: RichText(
-                                    text: TextSpan(children: [
-                                      TextSpan(
-                                        text: "Joined: ",
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: "Recruiter Name",
                                         style: TextStyle(
-                                          color: Colors.grey,
+                                          color: Colors.blue,
                                           fontFamily: 'Poppins',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w300,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
                                         ),
                                       ),
-                                      TextSpan(
-                                        text: "Date of join",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ]),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: Image.asset(
-                                    Assets.bank,
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: "Company Name",
-                                      style: TextStyle(
-                                        color: PrimaryColor,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                ),
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: "Company Type",
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(8),
-                                  child: Image.asset(
-                                    Assets.bank,
-                                    width: 24,
-                                    height: 24,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: "Company Location",
-                                      style: TextStyle(
-                                        color: PrimaryColor,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(children: [
                                         TextSpan(
-                                          text: "Revenue Generated: ",
+                                          text: "Joined: ",
                                           style: TextStyle(
                                             color: Colors.grey,
                                             fontFamily: 'Poppins',
@@ -359,42 +263,143 @@ class CompanyListState extends State<CompanyList> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: "\$10000",
+                                          text: "Date of join",
                                           style: TextStyle(
-                                            color: PrimaryColor,
+                                            color: Colors.grey,
                                             fontFamily: 'Poppins',
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300,
                                           ),
-                                        )
-                                      ],
+                                        ),
+                                      ]),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(8),
+                                    child: Image.asset(
+                                      Assets.bank,
+                                      width: 24,
+                                      height: 24,
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: "90%",
-                                      style: TextStyle(
-                                        color: PrimaryColor,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: "Company Name",
+                                        style: TextStyle(
+                                          color: PrimaryColor,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
-                            Container(
-                              child: LinearPercentIndicator(
-                                width: size.width - 70,
-                                lineHeight: 8.0,
-                                percent: 0.9,
-                                progressColor: Colors.blue,
+                                ],
                               ),
-                            ),
-                          ],
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: "Company Type",
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(8),
+                                    child: Image.asset(
+                                      Assets.bank,
+                                      width: 24,
+                                      height: 24,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: "Company Location",
+                                        style: TextStyle(
+                                          color: PrimaryColor,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: "Revenue Generated: ",
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontFamily: 'Poppins',
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: "\$10000",
+                                            style: TextStyle(
+                                              color: PrimaryColor,
+                                              fontFamily: 'Poppins',
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: "90%",
+                                        style: TextStyle(
+                                          color: PrimaryColor,
+                                          fontFamily: 'Poppins',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Container(
+                                child: LinearPercentIndicator(
+                                  width: size.width - 70,
+                                  lineHeight: 8.0,
+                                  percent: 0.9,
+                                  progressColor: Colors.blue,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
