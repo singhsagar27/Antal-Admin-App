@@ -53,47 +53,58 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
   Widget Appbar(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomAppBar(
-        height: 270,
-        child: SafeArea(
-          child: Container(
-            width: size.width,
-            child: Padding(
-              padding:
-                  new EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-              child: Column(
-                children: [
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        child: IconButton(
-                          icon: Icon(Icons.arrow_back, color: Colors.white),
-                          onPressed: () => Navigator.of(context).pop(),
+      height: 240,
+      child: SafeArea(
+        child: Container(
+          width: size.width,
+          child: Padding(
+            padding: new EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: 10,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(text: "Back", style: bold),
+                      ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          Assets.profileMenu,
+                          width: 36,
+                          height: 36,
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: RichText(
-                          text: TextSpan(text: "Back", style: bold),
-                        ),
-                      ),
-                      Expanded(
-                        child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Image.asset(
-                              Assets.profileMenu,
-                              width: 36,
-                              height: 36,
-                            )),
-                      ),
-                    ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
                     children: <Widget>[
                       CircleAvatar(
-                        radius: 30.0,
+                        radius: 27.0,
                         backgroundImage: AssetImage(Assets.profile),
                         backgroundColor: Colors.transparent,
                       ),
@@ -102,64 +113,68 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                         alignment: Alignment.centerLeft,
                         child: RichText(
                           text: TextSpan(
-                              text: "Register Company",
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 26.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500 // bol
-                                  )),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  StepsIndicator(
-                    selectedStep: 2,
-                    nbSteps: 3,
-                    selectedStepColorOut: Colors.white,
-                    selectedStepColorIn: Colors.white,
-                    doneStepColor: Colors.white,
-                    unselectedStepColorOut: Colors.white,
-                    unselectedStepColorIn: MainColor,
-                    doneLineColor: Colors.white,
-                    undoneLineColor: Colors.grey,
-                    isHorizontal: true,
-                    lineLength: 120,
-                    donelineThickness: 2,
-                    doneStepSize: 15,
-                    unselectedStepSize: 15,
-                    selectedStepSize: 17,
-                    selectedStepBorderSize: 1,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: RichText(
-                          text: TextSpan(
-                            text: "3. Billing Details",
+                            text: "Register Company",
                             style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: 14.0,
+                                fontSize: 24.0,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w400 // bol
+                                fontWeight: FontWeight.w500 // bol
                                 ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                StepsIndicator(
+                  selectedStep: 2,
+                  nbSteps: 3,
+                  selectedStepColorOut: Colors.white,
+                  selectedStepColorIn: Colors.white,
+                  doneStepColor: Colors.white,
+                  unselectedStepColorOut: Colors.white,
+                  unselectedStepColorIn: MainColor,
+                  doneLineColor: Colors.white,
+                  undoneLineColor: Colors.grey,
+                  isHorizontal: true,
+                  lineLength: 120,
+                  donelineThickness: 2,
+                  doneStepSize: 15,
+                  unselectedStepSize: 15,
+                  selectedStepSize: 17,
+                  selectedStepBorderSize: 1,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 20),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "3. Billing Details",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 14.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400 // bol
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {

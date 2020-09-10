@@ -78,127 +78,128 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
   Widget Appbar(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomAppBar(
-        height: size.height * 0.37,
-        child: SafeArea(
-          child: Container(
-            width: size.width,
-            child: Padding(
-              padding: new EdgeInsets.only(
-                left: size.width * 0.03,
-                right: size.width * 0.03,
-                top: size.height * 0.02,
-                bottom: size.height * 0.02,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        child: IconButton(
-                          icon: Icon(Icons.arrow_back, color: Colors.white),
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
+      height: 240,
+      child: SafeArea(
+        child: Container(
+          width: size.width,
+          child: Padding(
+            padding: new EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: 10,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    Container(
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () => Navigator.of(context).pop(),
                       ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: RichText(
-                          text: TextSpan(text: "Back", style: bold),
-                        ),
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Image.asset(
-                            Assets.profileMenu,
-                            width: 36,
-                            height: 36,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: size.width * 0.02,
-                      right: size.width * 0.02,
                     ),
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: <Widget>[
-                        CircleAvatar(
-                          radius: 27.0,
-                          backgroundImage: AssetImage(Assets.profile),
-                          backgroundColor: Colors.transparent,
-                        ),
-                        SizedBox(width: size.width * 0.02),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: RichText(
-                            text: TextSpan(
-                              text: "Register Company",
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 24.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500 // bol
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(text: "Back", style: bold),
+                      ),
                     ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          Assets.profileMenu,
+                          width: 36,
+                          height: 36,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
                   ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  StepsIndicator(
-                    selectedStep: 0,
-                    nbSteps: 3,
-                    selectedStepColorOut: Colors.white,
-                    selectedStepColorIn: Colors.white,
-                    doneStepColor: Colors.white,
-                    unselectedStepColorOut: Colors.white,
-                    unselectedStepColorIn: MainColor,
-                    doneLineColor: Colors.white,
-                    undoneLineColor: Colors.grey,
-                    isHorizontal: true,
-                    lineLength: size.width * 0.3,
-                    donelineThickness: 2,
-                    doneStepSize: 15,
-                    unselectedStepSize: 15,
-                    selectedStepSize: 17,
-                    selectedStepBorderSize: 1,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                  Row(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
                     children: <Widget>[
-                      SizedBox(width: size.width * 0.03),
+                      CircleAvatar(
+                        radius: 27.0,
+                        backgroundImage: AssetImage(Assets.profile),
+                        backgroundColor: Colors.transparent,
+                      ),
+                      SizedBox(width: 20),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: RichText(
                           text: TextSpan(
-                            text: "1. Basic Information",
+                            text: "Register Company",
                             style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: 14.0,
+                                fontSize: 24.0,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w400 // bol
+                                fontWeight: FontWeight.w500 // bol
                                 ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                StepsIndicator(
+                  selectedStep: 0,
+                  nbSteps: 3,
+                  selectedStepColorOut: Colors.white,
+                  selectedStepColorIn: Colors.white,
+                  doneStepColor: Colors.white,
+                  unselectedStepColorOut: Colors.white,
+                  unselectedStepColorIn: MainColor,
+                  doneLineColor: Colors.white,
+                  undoneLineColor: Colors.grey,
+                  isHorizontal: true,
+                  lineLength: 140,
+                  donelineThickness: 2,
+                  doneStepSize: 15,
+                  unselectedStepSize: 15,
+                  selectedStepSize: 17,
+                  selectedStepBorderSize: 1,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 20),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "1. Basic Information",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 14.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400 // bol
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget SetBody(GlobalKey<ScaffoldState> globalKey, BuildContext context) {
