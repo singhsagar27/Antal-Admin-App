@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/SetPin/set_pin_screen.dart';
+import 'package:leads_in/Screens/screens.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../assets.dart';
-import '../../screens.dart';
 
 class FPOtpVerificationForm extends StatelessWidget {
   FPOtpVerificationForm({
@@ -64,7 +64,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final otpVerifyButton = MaterialButton(
-      height: 50.0,
+      height: 54.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -72,27 +72,12 @@ class MyHomePageState extends State<MyHomePage> {
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
-        if (_fbKey.currentState.saveAndValidate()) {
-          print(currentText);
-          Navigator.of(context).push(_createPinSetRoute());
-          setState(() {
-            hasError = false;
-          });
-        } else {
-          errorController.add(
-              ErrorAnimationType.shake); // Triggering error shake animation
-          setState(() {
-            hasError = true;
-          });
-          print(_fbKey.currentState.value);
-          print('validation failed');
-          print('Pin verify');
-        }
+        Navigator.of(context).push(_createSetPasswordRoute());
       },
       child: Text(
         "Verify",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, fontFamily: 'Poppins'),
       ),
     );
 
@@ -179,11 +164,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontWeight: FontWeight.w500,
                                 color: MainColor,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context)
-                                      .push(_createSignUpRoute());
-                                },
+                              recognizer: TapGestureRecognizer()..onTap = () {},
                             )
                           ],
                         ),
@@ -218,28 +199,10 @@ class MyHomePageState extends State<MyHomePage> {
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createSignUpRoute() {
+  Route _createSetPasswordRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(0.0, 1.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
-
-  Route _createPinSetRoute() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SetPinScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          SetNewPasswordScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
