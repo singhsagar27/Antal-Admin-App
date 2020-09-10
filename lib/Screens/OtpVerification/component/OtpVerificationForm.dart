@@ -6,8 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../assets.dart';
-import '../../screens.dart';
+import 'package:leads_in/Screens/screens.dart';
 
 class OtpVerificationForm extends StatelessWidget {
   OtpVerificationForm({
