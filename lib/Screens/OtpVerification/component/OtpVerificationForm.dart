@@ -68,7 +68,7 @@ class MyHomePageState extends State<MyHomePage> {
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -168,7 +168,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w200,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
                             ),
                             TextSpan(
@@ -177,7 +177,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w500,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
@@ -206,7 +206,7 @@ class MyHomePageState extends State<MyHomePage> {
   final PinText = new TextStyle(
       fontFamily: 'Poppins',
       fontSize: 20.0,
-      color: PrimaryColor,
+      color: MainColor,
       fontWeight: FontWeight.w700 // bold
       );
 

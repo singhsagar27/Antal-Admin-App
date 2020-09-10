@@ -5,6 +5,7 @@ import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/screens.dart';
 import 'package:leads_in/assets.dart';
 import 'package:leads_in/widgets/CustomAppBar.dart';
+import 'package:leads_in/widgets/RaisedGradientButton.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class Body extends StatelessWidget {
@@ -75,6 +76,7 @@ class DashboardState extends State<Dashboard> {
         body: Scaffold(
           appBar: Appbar(context),
           body: SetBody(_key, context),
+          endDrawer: buildProfileDrawer(),
         ),
       ),
     );
@@ -118,10 +120,17 @@ class DashboardState extends State<Dashboard> {
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Image.asset(
-                      Assets.profileMenu,
-                      width: 30,
-                      height: 30,
+                    child: IconButton(
+                      onPressed: () {
+                        //_key.currentState.openDrawer();
+                        Scaffold.of(context).openDrawer();
+                        print("Open Drawer");
+                      },
+                      icon: Image.asset(
+                        Assets.profileMenu,
+                        width: 30,
+                        height: 30,
+                      ),
                     ),
                   ),
                 ),
@@ -135,14 +144,19 @@ class DashboardState extends State<Dashboard> {
 
   Widget RegisterCompanyButton() {
     Size size = MediaQuery.of(context).size;
-    return MaterialButton(
+    return RaisedGradientButton(
       height: 54.0,
-      minWidth: size.width * 0.8,
-      shape: buttonBorder,
+      width: size.width * 0.8,
+      gradient: LinearGradient(
+        colors: [
+          Color(0xFF3186E3),
+          MainColor,
+        ],
+        begin: FractionalOffset.topCenter,
+        end: FractionalOffset.bottomCenter,
+      ),
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
-      textColor: Colors.white,
-      padding: buttonPadding,
+
       onPressed: () {
         Navigator.of(context).push(_createRegisterCompanyRoute());
       },
@@ -159,12 +173,13 @@ class DashboardState extends State<Dashboard> {
             ),
           ),
           SizedBox(
-            width: size.width * 0.02,
+            width: size.width * 0.03,
           ),
           Text(
             "Register Company",
             textAlign: TextAlign.center,
             style: TextStyle(
+                color: Colors.white,
                 fontSize: 16,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.normal),
@@ -194,7 +209,7 @@ class DashboardState extends State<Dashboard> {
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 18.0,
-                      color: PrimaryColor,
+                      color: MainColor,
                       fontWeight: FontWeight.w500),
                 ),
               ),
@@ -264,7 +279,7 @@ class DashboardState extends State<Dashboard> {
                           style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 18.0,
-                              color: Colors.black,
+                              color: MainColor,
                               fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -345,7 +360,7 @@ class DashboardState extends State<Dashboard> {
                     width: size.width * 0.07,
                     height: size.width * 0.07,
                     fit: BoxFit.contain,
-                    colorFilter: ColorFilter.mode(PrimaryColor, BlendMode.dst),
+                    colorFilter: ColorFilter.mode(MainColor, BlendMode.dst),
                   ),
                   InkWell(
                     onTap: () {
@@ -368,7 +383,7 @@ class DashboardState extends State<Dashboard> {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w400),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -450,14 +465,6 @@ class DashboardState extends State<Dashboard> {
           )),
     );
   }
-
-  final buttonPadding =
-      new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
-
-  final buttonBorder = new RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
-  );
 
   final bold = new TextStyle(
       fontFamily: 'Poppins',

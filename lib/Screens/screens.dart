@@ -4,6 +4,7 @@ export 'Signup/sign_up_screen.dart';
 export 'OtpVerification/otp_verification_screen.dart';
 export 'SetPin/set_pin_screen.dart';
 export 'PinLogin/pin_login_screen.dart';
+export 'ForgotPassword/forgot_password_screen.dart';
 
 export 'AddRecruiter/One.dart';
 export 'AddRecruiter/Two.dart';

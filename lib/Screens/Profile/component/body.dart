@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/assets.dart';
 import 'package:leads_in/widgets/CustomAppBar.dart';
+import 'package:leads_in/widgets/RaisedGradientButton.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -75,12 +76,12 @@ class ProfileListState extends State<ProfileList> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              top: 110,
+              top: size.height * 0.15,
               bottom: 0,
               left: 0,
               right: 0,
               child: Container(
-                //Data
+                //Background
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -97,10 +98,17 @@ class ProfileListState extends State<ProfileList> {
                   Container(
                     padding: EdgeInsets.all(10),
                     alignment: Alignment.centerRight,
-                    child: Image.asset(
-                      Assets.profile,
-                      width: 24,
-                      height: 24,
+                    child: IconButton(
+                      iconSize: 30,
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        print("Close");
+                      },
                     ),
                   ),
                   CircularProfileAvatar(
@@ -112,10 +120,6 @@ class ProfileListState extends State<ProfileList> {
                     radius: 65,
                     backgroundColor: Colors.transparent,
                     borderWidth: 0,
-                    initialsText: Text(
-                      "AD",
-                      style: TextStyle(fontSize: 40, color: Colors.white),
-                    ),
                     borderColor: Colors.transparent,
                     elevation: 5.0,
                     foregroundColor: Colors.brown.withOpacity(0.5),
@@ -130,8 +134,8 @@ class ProfileListState extends State<ProfileList> {
                       text: TextSpan(
                           text: "My name",
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
+                            color: MainColor,
+                            fontSize: 32,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                           )),
@@ -143,7 +147,7 @@ class ProfileListState extends State<ProfileList> {
                       text: TextSpan(
                           text: "My profession",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: PrimaryDarkColor,
                             fontSize: 16,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
@@ -151,7 +155,7 @@ class ProfileListState extends State<ProfileList> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: size.height * 0.02,
                   ),
                   Divider(
                     thickness: 20,
@@ -202,7 +206,7 @@ class ProfileListState extends State<ProfileList> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: size.height * 0.02,
                               ),
                               Row(
                                 children: [
@@ -275,9 +279,9 @@ class ProfileListState extends State<ProfileList> {
                                       Container(
                                         alignment: Alignment.centerRight,
                                         child: Image.asset(
-                                          Assets.profile,
-                                          width: 24,
-                                          height: 24,
+                                          Assets.editLight,
+                                          width: 30,
+                                          height: 30,
                                         ),
                                       )
                                     ],
@@ -296,7 +300,7 @@ class ProfileListState extends State<ProfileList> {
                                 ],
                               ),
                               SizedBox(
-                                height: 10,
+                                height: size.height * 0.01,
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -347,10 +351,9 @@ class ProfileListState extends State<ProfileList> {
                                 children: [
                                   WidgetSpan(
                                     child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 2.0),
+                                        padding: EdgeInsets.only(right: 10),
                                         child: Image.asset(
-                                          Assets.profile,
+                                          Assets.iconEdit,
                                           width: 24,
                                           height: 24,
                                         )),
@@ -359,9 +362,9 @@ class ProfileListState extends State<ProfileList> {
                                     text: "Emergency Contact",
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
-                                      color: PrimaryColor,
+                                      color: MainColor,
                                       fontSize: 18,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   )
                                 ],
@@ -370,7 +373,7 @@ class ProfileListState extends State<ProfileList> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: size.height * 0.01,
                         ),
                         Divider(
                           thickness: 20,
@@ -390,36 +393,49 @@ class ProfileListState extends State<ProfileList> {
                                 text: "Change Password",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: PrimaryColor,
+                                  color: MainColor,
                                   fontSize: 18,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                           ),
                         ),
+                        Divider(
+                          thickness: 2,
+                          color: Colors.grey[100],
+                        ),
                       ],
                     ),
                   ),
-                  MaterialButton(
-                    height: 50.0,
-                    minWidth: 150.0,
-                    shape: buttonBorder,
+                  RaisedGradientButton(
+                    height: 54.0,
+                    width: size.width * 0.8,
+
                     //minWidth: MediaQuery.of(context).size.width,
-                    color: PrimaryColor,
-                    textColor: Colors.white,
-                    padding: buttonPadding,
+                    gradient: LinearGradient(
+                      colors: [
+                        Orange,
+                        DullRed,
+                      ],
+                      begin: FractionalOffset.topCenter,
+                      end: FractionalOffset.bottomCenter,
+                    ),
                     onPressed: () {
                       print("Log out");
                     },
                     child: Text(
                       "Log Out",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: size.height * 0.02,
                   ),
                 ],
               ),
@@ -430,12 +446,4 @@ class ProfileListState extends State<ProfileList> {
       ),
     );
   }
-
-  final buttonPadding =
-      new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
-
-  final buttonBorder = new RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
-  );
 }

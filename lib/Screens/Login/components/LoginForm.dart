@@ -59,7 +59,7 @@ class MyHomePageState extends State<MyHomePage> {
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () async {
@@ -219,6 +219,11 @@ class MyHomePageState extends State<MyHomePage> {
                         fontWeight: FontWeight.w300,
                         color: Colors.redAccent,
                       ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.of(context)
+                              .push(_createForgotPasswordRoute());
+                        },
                     ),
                   ),
                 ),
@@ -234,7 +239,7 @@ class MyHomePageState extends State<MyHomePage> {
                         fontFamily: 'Poppins',
                         fontSize: 15.0,
                         fontWeight: FontWeight.w300,
-                        color: PrimaryColor,
+                        color: MainColor,
                       ),
                     ),
                   ),
@@ -296,7 +301,7 @@ class MyHomePageState extends State<MyHomePage> {
                             fontFamily: 'Poppins',
                             fontSize: 15.0,
                             fontWeight: FontWeight.w300,
-                            color: PrimaryColor,
+                            color: MainColor,
                           ),
                         ),
                         TextSpan(
@@ -305,7 +310,7 @@ class MyHomePageState extends State<MyHomePage> {
                             fontFamily: 'Poppins',
                             fontSize: 15.0,
                             fontWeight: FontWeight.w500,
-                            color: PrimaryColor,
+                            color: MainColor,
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
@@ -331,6 +336,26 @@ class MyHomePageState extends State<MyHomePage> {
   Route _createSignUpRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _createForgotPasswordRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          ForgotPasswordScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

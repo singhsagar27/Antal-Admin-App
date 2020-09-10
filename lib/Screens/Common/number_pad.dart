@@ -18,9 +18,9 @@ class NumberPad extends StatelessWidget {
     this.height,
     this.fontSize,
     this.onPressed,
-    this.color = PrimaryColor,
+    this.color = MainColor,
     this.textColor = Colors.white,
-    this.borderColor = PrimaryColor,
+    this.borderColor = MainColor,
   }) : super(key: key);
 
   @override
@@ -28,7 +28,7 @@ class NumberPad extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(4.0),
+        padding: EdgeInsets.all(8.0),
         child: new SizedBox(
             height: height,
             width: width,

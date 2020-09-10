@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -5,9 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/screens.dart';
 import 'package:leads_in/assets.dart';
+import 'package:leads_in/models/login_model.dart';
+import 'package:leads_in/services/auth_service.dart';
 
-class SignUpForm extends StatelessWidget {
-  SignUpForm({
+class ForgotPasswordForm extends StatelessWidget {
+  ForgotPasswordForm({
     Key key,
   }) : super(key: key);
 
@@ -30,18 +33,28 @@ class MyHomePageState extends State<MyHomePage> {
   bool readOnly = false;
   bool showSegmentedControl = true;
   FocusNode _focusNode;
-  static final GlobalKey<FormBuilderState> _fbKey =
-      GlobalKey<FormBuilderState>();
+  GlobalKey<FormBuilderState> _fbKey;
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   bool _mobileHasError = false;
   bool _passwordHasError = false;
-  bool _emailHasError = false;
-  bool _confirmPasswordHasError = false;
+
+  @override
+  void initState() {
+    _fbKey = GlobalKey<FormBuilderState>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    final registerButton = MaterialButton(
+    final loginButton = MaterialButton(
       height: 54.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
@@ -49,18 +62,58 @@ class MyHomePageState extends State<MyHomePage> {
       color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
-      onPressed: () {
+      onPressed: () async {
         if (_fbKey.currentState.saveAndValidate()) {
           print(_fbKey.currentState.value);
-          Navigator.of(context).push(_createPinVerificationRoute());
+
+          ///Move this to after success login later
+          Navigator.of(context).push(_createLoginRoute());
+          final note = LoginModel(
+              UserMobile: _usernameController.text,
+              UserPass: _passwordController.text);
+          final result = await Auth.login_api(note);
+          final title = result.error ? 'Error' : 'Success';
+          result.error
+              ? showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text(title),
+                        content: Text('Something went wrong'),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      )).then((data) {
+                  if (result.data) {
+                    Navigator.of(context).pop();
+                  }
+                })
+              : showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text('Successfully Logged In!!!'),
+                        content: Text(result.successMessage),
+                        actions: <Widget>[
+                          FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      ));
         } else {
           print(_fbKey.currentState.value);
           print('validation failed');
-          print('Sign Up');
+          print('Log in');
         }
       },
       child: Text(
-        "Sign Up",
+        "Login",
         textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
@@ -78,25 +131,23 @@ class MyHomePageState extends State<MyHomePage> {
                   top: size.height * 0.05,
                   bottom: size.height * 0.02),
               child: Column(children: <Widget>[
-                FormBuilderPhoneField(
+                FormBuilderTextField(
                   maxLines: 1,
+                  obscureText: false,
+                  style: TextStyle(fontFamily: 'Poppins'),
                   attribute: 'mobile',
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Mobile',
                     labelStyle: TextStyle(
                       fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
                     ),
                     errorStyle: TextStyle(
                       fontFamily: 'Poppins',
                     ),
-                    //suffixIcon: _mobileHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                    //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
                   ),
-                  validators: [
-                    FormBuilderValidators.required(
-                        errorText: "Please Enter Mobile"),
-                    FormBuilderValidators.numeric(),
-                  ],
                   onChanged: (val) {
                     print(val);
                     setState(() {
@@ -105,49 +156,25 @@ class MyHomePageState extends State<MyHomePage> {
                           .validate();
                     });
                   },
-                  valueTransformer: (value) => value.toString().trim(),
-                  keyboardType: TextInputType.number,
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                FormBuilderTextField(
-                  maxLines: 1,
-                  obscureText: false,
-                  attribute: 'email',
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    labelText: 'Email ID',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                    ),
-                    errorStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                    ),
-                    //suffixIcon: _emailHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
-                  ),
-                  onChanged: (val) {
-                    print(val);
-                    setState(() {
-                      _emailHasError = !_fbKey
-                          .currentState.fields['email'].currentState
-                          .validate();
-                    });
-                  },
                   valueTransformer: (text) {
                     return text == null ? null : text.toString().trim();
                   },
                   validators: [
                     FormBuilderValidators.required(
-                        errorText: "Please Enter Email"),
-                    FormBuilderValidators.email(),
+                        errorText: "Please Enter Mobile"),
+                    FormBuilderValidators.numeric(),
+                    //FormBuilderValidators.maxLength(10),
+                    //FormBuilderValidators.minLength(10),
                   ],
+                  controller: _usernameController,
+                  keyboardType: TextInputType.phone,
                 ),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
+                  style: TextStyle(fontFamily: 'Poppins'),
                   obscureText: true,
                   attribute: 'password',
                   focusNode: _focusNode,
@@ -176,40 +203,24 @@ class MyHomePageState extends State<MyHomePage> {
                     FormBuilderValidators.required(
                         errorText: "Please Enter Password"),
                   ],
+                  controller: _passwordController,
                 ),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                FormBuilderTextField(
-                  maxLines: 1,
-                  obscureText: true,
-                  attribute: 'confirmPassword',
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    labelText: 'Confirm Password',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Poppins',
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Forgot Password.?",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.redAccent,
+                      ),
                     ),
-                    errorStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                    ),
-                    //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
-                  onChanged: (val) {
-                    print(val);
-                    setState(() {
-                      _confirmPasswordHasError = !_fbKey
-                          .currentState.fields['confirmPassword'].currentState
-                          .validate();
-                    });
-                  },
-                  valueTransformer: (text) {
-                    return text == null ? null : text.toString().trim();
-                  },
-                  validators: [
-                    FormBuilderValidators.required(
-                        errorText: "Please Enter Confirm Password"),
-                  ],
                 ),
                 SizedBox(
                   height: size.height * 0.01,
@@ -218,13 +229,14 @@ class MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.center,
                   child: RichText(
                     text: TextSpan(
-                        text: "Or Sign Up Using",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: MainColor,
-                        )),
+                      text: "Or Login Using",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w300,
+                        color: MainColor,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -244,6 +256,7 @@ class MyHomePageState extends State<MyHomePage> {
                           width: 24,
                           height: 24,
                           fit: BoxFit.cover,
+                          color: Colors.grey,
                         ),
                       ),
                       MaterialButton(
@@ -267,46 +280,42 @@ class MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    registerButton,
+                    loginButton,
                   ],
                 ),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: "Already Have Account? ",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w200,
-                                color: MainColor,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "Login",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w500,
-                                color: MainColor,
-                              ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context)
-                                      .push(_createLoginRoute());
-                                },
-                            )
-                          ],
+                Container(
+                  child: RichText(
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: "Don't Have Account? ",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w300,
+                            color: MainColor,
+                          ),
                         ),
-                      ),
-                    ]),
+                        TextSpan(
+                          text: "SignUp",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w500,
+                            color: MainColor,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.of(context).push(_createSignUpRoute());
+                            },
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ]))),
     );
   }
@@ -315,13 +324,13 @@ class MyHomePageState extends State<MyHomePage> {
       new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
 
   final buttonBorder = new RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
+    borderRadius: BorderRadius.circular(27.0),
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createLoginRoute() {
+  Route _createSignUpRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => LoginScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
@@ -338,10 +347,9 @@ class MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Route _createPinVerificationRoute() {
+  Route _createLoginRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          OtpVerificationScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => PinLoginScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
