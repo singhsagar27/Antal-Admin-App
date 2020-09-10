@@ -32,13 +32,18 @@ class MyHomePageState extends State<MyHomePage> {
   FocusNode _focusNode;
   static final GlobalKey<FormBuilderState> _fbKey =
       GlobalKey<FormBuilderState>();
+  bool _mobileHasError = false;
+  bool _passwordHasError = false;
+  bool _emailHasError = false;
+  bool _confirmPasswordHasError = false;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     final registerButton = MaterialButton(
-      height: 50.0,
-      minWidth: 150.0,
+      height: 54.0,
+      minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: PrimaryColor,
@@ -57,7 +62,8 @@ class MyHomePageState extends State<MyHomePage> {
       child: Text(
         "Sign Up",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(
+            fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
       ),
     );
 
@@ -70,107 +76,143 @@ class MyHomePageState extends State<MyHomePage> {
                   left: size.width * 0.10,
                   right: size.width * 0.10,
                   top: size.height * 0.05,
-                  bottom: size.height * 0.05),
+                  bottom: size.height * 0.02),
               child: Column(children: <Widget>[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Mobile Number",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
-                ),
                 FormBuilderPhoneField(
                   maxLines: 1,
                   attribute: 'mobile',
                   focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Mobile',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    //suffixIcon: _mobileHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                  ),
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Mobile"),
+                    FormBuilderValidators.numeric(),
                   ],
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _mobileHasError = !_fbKey
+                          .currentState.fields['mobile'].currentState
+                          .validate();
+                    });
+                  },
                   valueTransformer: (value) => value.toString().trim(),
+                  keyboardType: TextInputType.number,
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Email ID",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
+                  height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: false,
                   attribute: 'email',
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Email ID',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    //suffixIcon: _emailHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                  ),
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _emailHasError = !_fbKey
+                          .currentState.fields['email'].currentState
+                          .validate();
+                    });
+                  },
+                  valueTransformer: (text) {
+                    return text == null ? null : text.toString().trim();
+                  },
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Email"),
+                    FormBuilderValidators.email(),
                   ],
-                  valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Password",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
+                  height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: true,
                   attribute: 'password',
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                  ),
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _passwordHasError = !_fbKey
+                          .currentState.fields['password'].currentState
+                          .validate();
+                    });
+                  },
+                  valueTransformer: (text) {
+                    return text == null ? null : text.toString().trim();
+                  },
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Password"),
                   ],
-                  valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Confirm Password",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
-                  ),
+                  height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: true,
-                  attribute: 'password',
+                  attribute: 'confirmPassword',
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm Password',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                  ),
+                  onChanged: (val) {
+                    print(val);
+                    setState(() {
+                      _confirmPasswordHasError = !_fbKey
+                          .currentState.fields['confirmPassword'].currentState
+                          .validate();
+                    });
+                  },
+                  valueTransformer: (text) {
+                    return text == null ? null : text.toString().trim();
+                  },
                   validators: [
-                    FormBuilderValidators.required(),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Confirm Password"),
                   ],
-                  valueTransformer: (value) => value.toString().trim(),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -186,15 +228,15 @@ class MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Apple")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -205,8 +247,8 @@ class MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Google")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -219,7 +261,7 @@ class MyHomePageState extends State<MyHomePage> {
                       ),
                     ]),
                 SizedBox(
-                  height: 15,
+                  height: size.height * 0.01,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +271,7 @@ class MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: size.height * 0.01,
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,

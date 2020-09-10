@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/screens.dart';
+import 'package:leads_in/assets.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
-import '../../Palette.dart';
-import '../../assets.dart';
-import '../screens.dart';
 
 class AddPositionScreenOne extends StatefulWidget {
   AddPositionScreenOne({
