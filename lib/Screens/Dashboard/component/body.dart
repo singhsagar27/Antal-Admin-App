@@ -32,7 +32,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class DashboardState extends State<Dashboard> {
-  GlobalKey<ScaffoldState> _key;
+  GlobalKey<ScaffoldState> _key = new GlobalKey();
   final myController = TextEditingController();
 
   @override
@@ -48,9 +48,13 @@ class DashboardState extends State<Dashboard> {
     super.dispose();
   }
 
+  PanelController _pc = new PanelController();
+  bool _isDrawerOpen = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     BorderRadiusGeometry radius = BorderRadius.only(
       topLeft: Radius.circular(24.0),
       topRight: Radius.circular(24.0),
@@ -58,6 +62,7 @@ class DashboardState extends State<Dashboard> {
 
     return Material(
       child: SlidingUpPanel(
+        controller: _pc,
         minHeight: size.height * 0.25,
         maxHeight: size.height * 0.70,
         snapPoint: 0.45,
@@ -74,9 +79,25 @@ class DashboardState extends State<Dashboard> {
         borderRadius: radius,
         panel: BottomSheet(_key, context),
         body: Scaffold(
+          key: _key,
           appBar: Appbar(context),
           body: SetBody(_key, context),
-          endDrawer: buildProfileDrawer(),
+          endDrawer: CustomDrawer(
+            callback: (isOpen) {
+              print("isOpen ${isOpen}");
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  _isDrawerOpen = isOpen;
+                });
+              });
+
+              if (isOpen) {
+                _pc.hide();
+              } else {
+                _pc.show();
+              }
+            },
+          ),
         ),
       ),
     );
@@ -122,8 +143,9 @@ class DashboardState extends State<Dashboard> {
                     alignment: Alignment.centerRight,
                     child: IconButton(
                       onPressed: () {
-                        //_key.currentState.openDrawer();
-                        Scaffold.of(context).openDrawer();
+                        _key.currentState.openEndDrawer();
+                        //Scaffold.of(context).openEndDrawer();
+
                         print("Open Drawer");
                       },
                       icon: Image.asset(
@@ -539,5 +561,52 @@ class DashboardState extends State<Dashboard> {
         );
       },
     );
+  }
+}
+
+class CustomDrawer extends StatefulWidget {
+  CustomDrawer({
+    Key key,
+    this.elevation = 16.0,
+    this.child,
+    this.semanticLabel,
+    this.callback,
+  })  : assert(elevation != null && elevation >= 0.0),
+        super(key: key);
+
+  final double elevation;
+  final Widget child;
+  final String semanticLabel;
+
+  final DrawerCallback callback;
+  @override
+  _CustomDrawerState createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  @override
+  void initState() {
+    if (widget.callback != null) {
+      widget.callback(true);
+    }
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    if (widget.callback != null) {
+      widget.callback(false);
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+        key: widget.key,
+        elevation: widget.elevation,
+        semanticLabel: widget.semanticLabel,
+        child: widget.child);
   }
 }

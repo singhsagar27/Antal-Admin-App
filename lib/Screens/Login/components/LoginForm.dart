@@ -122,206 +122,210 @@ class MyHomePageState extends State<MyHomePage> {
 
     return Container(
       child: FormBuilder(
-          // context,
-          key: _fbKey,
-          child: Padding(
-              padding: new EdgeInsets.only(
-                  left: size.width * 0.10,
-                  right: size.width * 0.10,
-                  top: size.height * 0.05,
-                  bottom: size.height * 0.02),
-              child: Column(children: <Widget>[
-                FormBuilderTextField(
-                  maxLines: 1,
-                  obscureText: false,
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  attribute: 'mobile',
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    labelText: 'Mobile',
-                    labelStyle: TextStyle(
+        // context,
+        key: _fbKey,
+        child: Padding(
+          padding: new EdgeInsets.only(
+              left: size.width * 0.10,
+              right: size.width * 0.10,
+              top: size.height * 0.05,
+              bottom: size.height * 0.02),
+          child: Column(
+            children: <Widget>[
+              FormBuilderTextField(
+                maxLines: 1,
+                obscureText: false,
+                style: TextStyle(fontFamily: 'Poppins'),
+                attribute: 'mobile',
+                focusNode: _focusNode,
+                decoration: InputDecoration(
+                  labelText: 'Mobile',
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w300,
+                  ),
+                  errorStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                  //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
+                ),
+                onChanged: (val) {
+                  print(val);
+                  setState(() {
+                    _mobileHasError = !_fbKey
+                        .currentState.fields['mobile'].currentState
+                        .validate();
+                  });
+                },
+                valueTransformer: (text) {
+                  return text == null ? null : text.toString().trim();
+                },
+                validators: [
+                  FormBuilderValidators.required(
+                      errorText: "Please Enter Mobile"),
+                  FormBuilderValidators.numeric(),
+                  //FormBuilderValidators.maxLength(10),
+                  //FormBuilderValidators.minLength(10),
+                ],
+                controller: _usernameController,
+                keyboardType: TextInputType.phone,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              FormBuilderTextField(
+                maxLines: 1,
+                style: TextStyle(fontFamily: 'Poppins'),
+                obscureText: true,
+                attribute: 'password',
+                focusNode: _focusNode,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                  errorStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                  //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                ),
+                onChanged: (val) {
+                  print(val);
+                  setState(() {
+                    _passwordHasError = !_fbKey
+                        .currentState.fields['password'].currentState
+                        .validate();
+                  });
+                },
+                valueTransformer: (text) {
+                  return text == null ? null : text.toString().trim();
+                },
+                validators: [
+                  FormBuilderValidators.required(
+                      errorText: "Please Enter Password"),
+                ],
+                controller: _passwordController,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                  text: TextSpan(
+                    text: "Forgot Password.?",
+                    style: TextStyle(
                       fontFamily: 'Poppins',
+                      fontSize: 14.0,
                       fontWeight: FontWeight.w300,
+                      color: Colors.redAccent,
                     ),
-                    errorStyle: TextStyle(
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.of(context)
+                            .push(_createForgotPasswordRoute());
+                      },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: RichText(
+                  text: TextSpan(
+                    text: "Or Login Using",
+                    style: TextStyle(
                       fontFamily: 'Poppins',
-                    ),
-                    //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
-                  ),
-                  onChanged: (val) {
-                    print(val);
-                    setState(() {
-                      _mobileHasError = !_fbKey
-                          .currentState.fields['mobile'].currentState
-                          .validate();
-                    });
-                  },
-                  valueTransformer: (text) {
-                    return text == null ? null : text.toString().trim();
-                  },
-                  validators: [
-                    FormBuilderValidators.required(
-                        errorText: "Please Enter Mobile"),
-                    FormBuilderValidators.numeric(),
-                    //FormBuilderValidators.maxLength(10),
-                    //FormBuilderValidators.minLength(10),
-                  ],
-                  controller: _usernameController,
-                  keyboardType: TextInputType.phone,
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                FormBuilderTextField(
-                  maxLines: 1,
-                  style: TextStyle(fontFamily: 'Poppins'),
-                  obscureText: true,
-                  attribute: 'password',
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                    ),
-                    errorStyle: TextStyle(
-                      fontFamily: 'Poppins',
-                    ),
-                    //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
-                  ),
-                  onChanged: (val) {
-                    print(val);
-                    setState(() {
-                      _passwordHasError = !_fbKey
-                          .currentState.fields['password'].currentState
-                          .validate();
-                    });
-                  },
-                  valueTransformer: (text) {
-                    return text == null ? null : text.toString().trim();
-                  },
-                  validators: [
-                    FormBuilderValidators.required(
-                        errorText: "Please Enter Password"),
-                  ],
-                  controller: _passwordController,
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Forgot Password.?",
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.redAccent,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.of(context)
-                              .push(_createForgotPasswordRoute());
-                        },
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w300,
+                      color: MainColor,
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Or Login Using",
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w300,
-                        color: MainColor,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      MaterialButton(
-                        minWidth: 30,
-                        height: 30,
-                        onPressed: () => {print("Apple")},
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset(
-                          Assets.appleLogo,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.cover,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      MaterialButton(
-                        minWidth: 30,
-                        height: 30,
-                        onPressed: () => {print("Google")},
-                        padding: EdgeInsets.all(0.0),
-                        child: Image.asset(
-                          Assets.googleLogo,
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.cover,
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ]),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Row(
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    loginButton,
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Container(
-                  child: RichText(
-                    text: TextSpan(
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: "Don't Have Account? ",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w300,
-                            color: MainColor,
-                          ),
-                        ),
-                        TextSpan(
-                          text: "SignUp",
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w500,
-                            color: MainColor,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.of(context).push(_createSignUpRoute());
-                            },
-                        )
-                      ],
+                    MaterialButton(
+                      minWidth: 30,
+                      height: 30,
+                      onPressed: () => {print("Apple")},
+                      padding: EdgeInsets.all(0.0),
+                      child: Image.asset(
+                        Assets.appleLogo,
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.cover,
+                        color: Colors.grey,
+                      ),
                     ),
+                    MaterialButton(
+                      minWidth: 30,
+                      height: 30,
+                      onPressed: () => {print("Google")},
+                      padding: EdgeInsets.all(0.0),
+                      child: Image.asset(
+                        Assets.googleLogo,
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.cover,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ]),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  loginButton,
+                ],
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              Container(
+                child: RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Don't Have Account? ",
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w300,
+                          color: MainColor,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "SignUp",
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w500,
+                          color: MainColor,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.of(context).push(_createSignUpRoute());
+                          },
+                      )
+                    ],
                   ),
                 ),
-              ]))),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 

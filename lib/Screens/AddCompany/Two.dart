@@ -184,77 +184,64 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                             bottom: size.height * 0.05),
                         child: Column(
                           children: <Widget>[
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Company Email",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
-                            ),
                             FormBuilderTextField(
                               maxLines: 1,
                               attribute: 'companyEmail',
                               focusNode: _focusNode,
+                              decoration: InputDecoration(
+                                labelText: 'Companay Email',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
+                                FormBuilderValidators.email(),
                               ],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Company Contact Number",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
+                              height: size.height * 0.02,
                             ),
                             FormBuilderPhoneField(
                               attribute: 'companyPhone',
-                              decoration: const InputDecoration(),
-                              // initialValue: 'Male',
+                              decoration: InputDecoration(
+                                labelText: 'Company Phone',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [FormBuilderValidators.required()],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
                               // isExpanded: false,
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Ceo Name",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
+                              height: size.height * 0.02,
                             ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'ceoName',
+                              decoration: InputDecoration(
+                                labelText: 'Ceo Name',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                               ],
@@ -262,78 +249,68 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                                   value.toString().trim(),
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Ceo Number",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
+                              height: size.height * 0.02,
                             ),
                             FormBuilderPhoneField(
                               attribute: 'ceoNumber',
-                              decoration: const InputDecoration(),
-                              // initialValue: 'Male',
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                labelText: 'Ceo Number',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [FormBuilderValidators.required()],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
                               // isExpanded: false,
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "HR Contact Number",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
+                              height: size.height * 0.02,
                             ),
                             FormBuilderPhoneField(
                               attribute: 'hrNumber',
-                              decoration: const InputDecoration(),
-                              // initialValue: 'Male',
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                labelText: 'HR Contact Number',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [FormBuilderValidators.required()],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
                               // isExpanded: false,
                             ),
                             SizedBox(
-                              height: 20,
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Client Location",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w200,
-                                    color: MainColor,
-                                  ),
-                                ),
-                              ),
+                              height: size.height * 0.02,
                             ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'streetOne',
+                              decoration: InputDecoration(
+                                labelText: 'Location',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                hintText: "Street 1",
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                               ],
@@ -344,75 +321,78 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'streetTwo',
+                              decoration: InputDecoration(
+                                hintText: "Street 2",
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                               ],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                    text: "City",
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w200,
-                                      color: MainColor,
-                                    )),
-                              ),
                             ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'city',
+                              decoration: InputDecoration(
+                                labelText: 'City',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                               ],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                    text: "State",
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w200,
-                                      color: MainColor,
-                                    )),
-                              ),
                             ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'state',
+                              decoration: InputDecoration(
+                                labelText: 'State',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                               ],
                               valueTransformer: (value) =>
                                   value.toString().trim(),
                             ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RichText(
-                                text: TextSpan(
-                                    text: "Pin",
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w200,
-                                      color: MainColor,
-                                    )),
-                              ),
-                            ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'pinCode',
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                labelText: 'Pin',
+
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                errorStyle: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
+                                //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                              ),
                               validators: [
                                 FormBuilderValidators.required(),
                                 FormBuilderValidators.numeric(),
@@ -421,7 +401,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                                   value.toString().trim(),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: size.height * 0.02,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

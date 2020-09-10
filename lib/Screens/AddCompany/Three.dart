@@ -143,13 +143,14 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                         alignment: Alignment.centerLeft,
                         child: RichText(
                           text: TextSpan(
-                              text: "3. Billing Details",
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400 // bol
-                                  )),
+                            text: "3. Billing Details",
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 14.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400 // bol
+                                ),
+                          ),
                         ),
                       ),
                     ],
@@ -184,23 +185,19 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                           bottom: size.height * 0.05),
                       child: Column(
                         children: <Widget>[
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "GST Number",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
-                          ),
                           FormBuilderTextField(
                             maxLines: 1,
                             attribute: 'gstNumber',
+                            decoration: InputDecoration(
+                              labelText: 'GST Number',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             focusNode: _focusNode,
                             validators: [
                               FormBuilderValidators.required(),
@@ -209,26 +206,20 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                                 value.toString().trim(),
                           ),
                           SizedBox(
-                            height: 20,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "PAN Number",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
+                            height: size.height * 0.02,
                           ),
                           FormBuilderTextField(
                             attribute: 'panNumber',
-                            decoration: const InputDecoration(),
-                            // initialValue: 'Male',
+                            decoration: InputDecoration(
+                              labelText: 'PAN Number',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -236,26 +227,26 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                                 value.toString().trim(),
                           ),
                           SizedBox(
-                            height: 20,
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "Client Location",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
+                            height: size.height * 0.02,
                           ),
                           FormBuilderTextField(
                             maxLines: 1,
                             obscureText: false,
                             attribute: 'streetOne',
+                            decoration: InputDecoration(
+                              labelText: 'Client Location',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              hintText: "Street 1",
+                              hintStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             validators: [
                               FormBuilderValidators.required(),
                             ],
@@ -266,53 +257,55 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                             maxLines: 1,
                             obscureText: false,
                             attribute: 'streetTwo',
+                            decoration: InputDecoration(
+                              hintText: 'Street 2',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             validators: [
                               FormBuilderValidators.required(),
                             ],
                             valueTransformer: (value) =>
                                 value.toString().trim(),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "City",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
                           ),
                           FormBuilderTextField(
                             maxLines: 1,
                             obscureText: false,
                             attribute: 'city',
+                            decoration: InputDecoration(
+                              labelText: 'City',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             validators: [
                               FormBuilderValidators.required(),
                             ],
                             valueTransformer: (value) =>
                                 value.toString().trim(),
                           ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "State",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
-                          ),
                           FormBuilderTextField(
                             maxLines: 1,
                             obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'State',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             attribute: 'state',
                             validators: [
                               FormBuilderValidators.required(),
@@ -320,24 +313,21 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                             valueTransformer: (value) =>
                                 value.toString().trim(),
                           ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                text: "Pin",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w200,
-                                  color: MainColor,
-                                ),
-                              ),
-                            ),
-                          ),
                           FormBuilderTextField(
                             maxLines: 1,
                             obscureText: false,
                             attribute: 'pinCode',
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'PIN Number',
+                              labelStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              errorStyle: TextStyle(
+                                fontFamily: 'Poppins',
+                              ),
+                              //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                            ),
                             validators: [
                               FormBuilderValidators.required(),
                               FormBuilderValidators.numeric(),
@@ -346,7 +336,7 @@ class _RegisterCompanyState extends State<AddCompanyScreenThree> {
                                 value.toString().trim(),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: size.height * 0.02,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
