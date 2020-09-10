@@ -17,7 +17,12 @@ class Assets {
   static const String googleLogo = '${_images}icon-logo-google.png';
   static const String iconEdit = '${_images}icon-feather-edit-3.png';
   static const String iconStats = '${_images}icon-ionic-ios-stats.png';
+  static const String iconRecruiter = '${_images}user-tie.png';
+  static const String iconSalesPartner = '${_images}tie.png';
   static const String splashScreenLogo = '${_images}splash_logo.png';
+  static const String iconTrackLead = '${_images}dashboard.png';
+  static const String iconLink = '${_images}link.png';
+  static const String iconPie = '${_images}pie.png';
 
   //static const String apple = '${_images}apple.png';
   static const String otherPageLogo = '${_images}other_page_logo.png';

@@ -97,13 +97,9 @@ class DashboardState extends State<Dashboard> {
                     Assets.profile,
                     fit: BoxFit.cover,
                   ),
-                  radius: 30,
+                  radius: 27,
                   backgroundColor: Colors.transparent,
                   borderWidth: 0,
-                  initialsText: Text(
-                    "AD",
-                    style: TextStyle(fontSize: 40, color: Colors.white),
-                  ),
                   borderColor: Colors.transparent,
                   elevation: 2.0,
                   foregroundColor: Colors.brown.withOpacity(0.5),
@@ -124,8 +120,8 @@ class DashboardState extends State<Dashboard> {
                     alignment: Alignment.centerRight,
                     child: Image.asset(
                       Assets.profileMenu,
-                      width: 36,
-                      height: 36,
+                      width: 30,
+                      height: 30,
                     ),
                   ),
                 ),
@@ -138,9 +134,10 @@ class DashboardState extends State<Dashboard> {
   }
 
   Widget RegisterCompanyButton() {
+    Size size = MediaQuery.of(context).size;
     return MaterialButton(
-      height: 50.0,
-      minWidth: 150.0,
+      height: 54.0,
+      minWidth: size.width * 0.8,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: PrimaryColor,
@@ -149,10 +146,30 @@ class DashboardState extends State<Dashboard> {
       onPressed: () {
         Navigator.of(context).push(_createRegisterCompanyRoute());
       },
-      child: Text(
-        "Register Company",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: Image.asset(
+              Assets.bank,
+              width: 30,
+              height: 30,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            width: size.width * 0.02,
+          ),
+          Text(
+            "Register Company",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.normal),
+          ),
+        ],
       ),
     );
   }
@@ -162,124 +179,135 @@ class DashboardState extends State<Dashboard> {
     return Padding(
       padding: EdgeInsets.only(top: size.height * 0.04),
       child: Container(
-          alignment: Alignment.topCenter,
-          width: size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: RichText(
-                  text: TextSpan(
-                    text: "Add",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
+        alignment: Alignment.topCenter,
+        width: size.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: RichText(
+                text: TextSpan(
+                  text: "Add",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18.0,
+                      color: PrimaryColor,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: size.height * 0.01,
+            ),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.05, right: size.width * 0.05),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SheetIcon(
+                              context, "Company", Assets.bank, Colors.white),
+                          SheetIcon(context, "Recruiter", Assets.iconRecruiter,
+                              Colors.white),
+                          SheetIcon(context, "Sales Partner",
+                              Assets.iconSalesPartner, Colors.white),
+                          SheetIcon(context, "Accounts Person",
+                              Assets.addressBook, Colors.white),
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * 0.05, right: size.width * 0.05),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SheetIcon(context, "Company", Assets.bank),
-                            SheetIcon(context, "Recruiter", Assets.bank),
-                            SheetIcon(context, "Sales Partner", Assets.bank),
-                            SheetIcon(context, "Accounts Person", Assets.bank),
-                          ],
+                    ),
+                    Divider(
+                      height: size.height * 0.02,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.05, right: size.width * 0.05),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SheetIcon(context, "Track Lead", Assets.iconTrackLead,
+                              Colors.white),
+                          SheetIcon(context, "Add Lead", Assets.attachment,
+                              Colors.white),
+                          SheetIcon(context, "Assign Lead", Assets.iconLink,
+                              Colors.white),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      height: size.height * 0.02,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "View",
+                          style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
-                      Divider(
-                        height: size.height * 0.02,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.05, right: size.width * 0.05),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SheetIcon(context, "Connected Companies",
+                              Assets.files, Colors.blue[50]),
+                          SheetIcon(context, "Sales Partner", Assets.briefcase,
+                              Colors.blue[50]),
+                          SheetIcon(context, "Accounts Person",
+                              Assets.cardSwipe, Colors.blue[50]),
+                          SheetIcon(context, "Revenue Generated",
+                              Assets.iconPie, Colors.blue[50]),
+                        ],
                       ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * 0.05, right: size.width * 0.05),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SheetIcon(context, "Track Lead", Assets.bank),
-                            SheetIcon(context, "Add Lead", Assets.bank),
-                            SheetIcon(context, "Assign Lead", Assets.bank),
-                          ],
-                        ),
-                      ),
-                      Divider(
-                        height: size.height * 0.02,
-                      ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: RichText(
-                          text: TextSpan(
-                            text: "View",
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 18.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.02,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: size.width * 0.05, right: size.width * 0.05),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SheetIcon(
-                                context, "Connected Companies", Assets.bank),
-                            SheetIcon(context, "Sales Partner", Assets.bank),
-                            SheetIcon(context, "Accounts Person", Assets.bank),
-                            SheetIcon(
-                                context, "Revenue Generated", Assets.bank),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      RegisterCompanyButton(),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    RegisterCompanyButton(),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget SheetIcon(BuildContext context, String title, String assetName) {
+  Widget SheetIcon(
+      BuildContext context, String title, String assetName, Color back) {
     Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width * 0.20,
@@ -292,10 +320,10 @@ class DashboardState extends State<Dashboard> {
         children: [
           Container(
             alignment: Alignment.topCenter,
-            width: size.width * 0.15,
-            height: size.width * 0.15,
+            width: size.width * 0.13,
+            height: size.width * 0.13,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: back,
               borderRadius: BorderRadius.circular(100),
               boxShadow: [
                 BoxShadow(
@@ -314,9 +342,10 @@ class DashboardState extends State<Dashboard> {
                 children: [
                   Ink.image(
                     image: AssetImage(assetName),
-                    width: size.width * 0.09,
-                    height: size.width * 0.09,
+                    width: size.width * 0.07,
+                    height: size.width * 0.07,
                     fit: BoxFit.contain,
+                    colorFilter: ColorFilter.mode(PrimaryColor, BlendMode.dst),
                   ),
                   InkWell(
                     onTap: () {
@@ -334,7 +363,10 @@ class DashboardState extends State<Dashboard> {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w400),
             ),
           )
         ],
