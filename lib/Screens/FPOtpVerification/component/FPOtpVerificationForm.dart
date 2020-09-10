@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-
+import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../../assets.dart';
 import '../../screens.dart';
 
 class FPOtpVerificationForm extends StatelessWidget {
@@ -63,7 +64,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final otpVerifyButton = MaterialButton(
-      height: 54.0,
+      height: 50.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -73,7 +74,7 @@ class MyHomePageState extends State<MyHomePage> {
       onPressed: () {
         if (_fbKey.currentState.saveAndValidate()) {
           print(currentText);
-          Navigator.of(context).push(_createSetNewPasswordRoute());
+          Navigator.of(context).push(_createPinSetRoute());
           setState(() {
             hasError = false;
           });
@@ -178,7 +179,11 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontWeight: FontWeight.w500,
                                 color: MainColor,
                               ),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.of(context)
+                                      .push(_createSignUpRoute());
+                                },
                             )
                           ],
                         ),
@@ -213,10 +218,28 @@ class MyHomePageState extends State<MyHomePage> {
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createSetNewPasswordRoute() {
+  Route _createSignUpRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          SetNewPasswordScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _createPinSetRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SetPinScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

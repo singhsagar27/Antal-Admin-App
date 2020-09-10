@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
-import 'package:leads_in/Screens/Login/components/LoginForm.dart';
 
 import '../../Common/background.dart';
 

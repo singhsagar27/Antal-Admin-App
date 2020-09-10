@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
-import 'ForgotPasswordForm.dart';
+import 'SetNewPasswordForm.dart';
 
 import '../../Common/background.dart';
 
@@ -17,11 +17,11 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           FormTitle(
-            title: "Forgot Password",
-            messege: "Please Enter Mobile Number",
+            title: "New Password",
+            messege: "Please set New Password",
           ),
           FormBackground(
-            child: ForgotPasswordForm(),
+            child: SetNewPasswordForm(),
           )
         ],
       ),

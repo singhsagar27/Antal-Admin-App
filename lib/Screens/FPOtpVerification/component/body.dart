@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
-import 'ForgotPasswordForm.dart';
 
 import '../../Common/background.dart';
+
+import 'FPOtpVerificationForm.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -17,12 +18,12 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           FormTitle(
-            title: "Forgot Password",
-            messege: "Please Enter Mobile Number",
+            title: "Verification",
+            messege: "Enter Verification Code Sent to Your Phone",
           ),
           FormBackground(
-            child: ForgotPasswordForm(),
-          )
+            child: FPOtpVerificationForm(),
+          ),
         ],
       ),
     );

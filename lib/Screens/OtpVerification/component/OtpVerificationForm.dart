@@ -64,7 +64,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final otpVerifyButton = MaterialButton(
-      height: 50.0,
+      height: 54.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -179,11 +179,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontWeight: FontWeight.w500,
                                 color: MainColor,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context)
-                                      .push(_createSignUpRoute());
-                                },
+                              recognizer: TapGestureRecognizer()..onTap = () {},
                             )
                           ],
                         ),

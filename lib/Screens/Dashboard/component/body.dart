@@ -65,15 +65,19 @@ class DashboardState extends State<Dashboard> {
         controller: _pc,
         minHeight: size.height * 0.25,
         maxHeight: size.height * 0.70,
-        snapPoint: 0.45,
         backdropTapClosesPanel: false,
         header: Container(
             width: size.width,
             child: Align(
               alignment: Alignment.center,
-              child: Icon(
-                Icons.keyboard_arrow_up,
-                size: 30,
+              child: IconButton(
+                icon: Icon(
+                  Icons.keyboard_arrow_up,
+                  size: 30,
+                ),
+                onPressed: () {
+                  _pc.open();
+                },
               ),
             )),
         borderRadius: radius,

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
-import 'package:leads_in/Screens/screens.dart';
-import 'package:leads_in/assets.dart';
 import 'package:leads_in/models/login_model.dart';
 import 'package:leads_in/services/auth_service.dart';
+import '../../../assets.dart';
+import '../../screens.dart';
 
-class ForgotPasswordForm extends StatelessWidget {
-  ForgotPasswordForm({
+class SetNewPasswordForm extends StatelessWidget {
+  SetNewPasswordForm({
     Key key,
   }) : super(key: key);
 
@@ -34,10 +34,10 @@ class MyHomePageState extends State<MyHomePage> {
   bool showSegmentedControl = true;
   FocusNode _focusNode;
   GlobalKey<FormBuilderState> _fbKey;
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  bool _mobileHasError = false;
-  bool _passwordHasError = false;
+  TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _newPasswordController = TextEditingController();
+  bool _confirmPasswordHasError = false;
+  bool _newPasswordHasError = false;
 
   @override
   void initState() {
@@ -63,11 +63,11 @@ class MyHomePageState extends State<MyHomePage> {
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
-        Navigator.of(context).push(_createVerifyRoute());
-        print('Next');
+        Navigator.of(context).push(_createLoginRoute());
+        print('Log in');
       },
       child: Text(
-        "Next",
+        "Set",
         textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
@@ -88,26 +88,25 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               FormBuilderTextField(
                 maxLines: 1,
-                obscureText: false,
                 style: TextStyle(fontFamily: 'Poppins'),
-                attribute: 'mobile',
+                obscureText: true,
+                attribute: 'password',
                 focusNode: _focusNode,
                 decoration: InputDecoration(
-                  labelText: 'Mobile',
+                  labelText: 'New Password',
                   labelStyle: TextStyle(
                     fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w300,
                   ),
                   errorStyle: TextStyle(
                     fontFamily: 'Poppins',
                   ),
-                  //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
+                  //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                 ),
                 onChanged: (val) {
                   print(val);
                   setState(() {
-                    _mobileHasError = !_fbKey
-                        .currentState.fields['mobile'].currentState
+                    _newPasswordHasError = !_fbKey
+                        .currentState.fields['password'].currentState
                         .validate();
                   });
                 },
@@ -116,13 +115,45 @@ class MyHomePageState extends State<MyHomePage> {
                 },
                 validators: [
                   FormBuilderValidators.required(
-                      errorText: "Please Enter Mobile"),
-                  FormBuilderValidators.numeric(),
-                  //FormBuilderValidators.maxLength(10),
-                  //FormBuilderValidators.minLength(10),
+                      errorText: "Please Enter New Password"),
                 ],
-                controller: _usernameController,
-                keyboardType: TextInputType.phone,
+                controller: _newPasswordController,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              FormBuilderTextField(
+                maxLines: 1,
+                style: TextStyle(fontFamily: 'Poppins'),
+                obscureText: true,
+                attribute: 'confirmPassword',
+                focusNode: _focusNode,
+                decoration: InputDecoration(
+                  labelText: 'Confirm Password',
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                  errorStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                  ),
+                  //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
+                ),
+                onChanged: (val) {
+                  print(val);
+                  setState(() {
+                    _confirmPasswordHasError = !_fbKey
+                        .currentState.fields['password'].currentState
+                        .validate();
+                  });
+                },
+                valueTransformer: (text) {
+                  return text == null ? null : text.toString().trim();
+                },
+                validators: [
+                  FormBuilderValidators.required(
+                      errorText: "Please Enter Confirm Password"),
+                ],
+                controller: _confirmPasswordController,
               ),
               SizedBox(
                 height: size.height * 0.01,
@@ -152,10 +183,28 @@ class MyHomePageState extends State<MyHomePage> {
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 
-  Route _createVerifyRoute() {
+  Route _createSignUpRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          FPOtpVerificationScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => SignUpScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Route _createLoginRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => LoginScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;
