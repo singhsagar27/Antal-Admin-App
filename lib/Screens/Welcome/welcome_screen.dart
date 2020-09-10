@@ -11,7 +11,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool _selected1 = false, _selected2 = false, _selected3 = false;
+  bool _selected1 = false, _selected2 = false;
   TextStyle style = TextStyle(fontFamily: 'Poppins', fontSize: 20.0);
 
   @override
@@ -28,7 +28,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     final loginButton = MaterialButton(
-      height: 50.0,
+      height: 54.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -43,12 +43,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       child: Text(
         "Log In",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(
+            fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
       ),
     );
 
     final registerButton = MaterialButton(
-      height: 50.0,
+      height: 54.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -63,22 +64,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       child: Text(
         "Sign up",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(
+            fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
       ),
     );
 
     return new Container(
         color: PrimaryColor,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               child: Container(
-                  width: size.width * 6,
-                  height: size.height * 2.5,
-                  decoration: const BoxDecoration(color: Colors.transparent),
-                  child: Image.asset(Assets.splashScreenLogo)),
+                width: size.width * 6,
+                height: size.height * 2.5,
+                decoration: const BoxDecoration(color: Colors.transparent),
+                child: Image.asset(Assets.splashScreenLogo),
+              ),
               flex: 1,
             ),
             Expanded(
@@ -93,7 +96,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       text: "Choose CEO Mitra Community", style: light),
                 ),
                 Container(
-                    padding: EdgeInsets.only(top: size.height * 0.05),
+                    padding: EdgeInsets.only(top: size.height * 0.07),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -103,18 +106,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ],
                     )),
                 Container(
-                    padding: EdgeInsets.only(top: size.height * 0.03),
-                    child: RichText(
-                      text: TextSpan(text: "Or", style: light),
-                    )),
+                  padding: EdgeInsets.only(top: size.height * 0.07),
+                  child: RichText(
+                    text: TextSpan(text: "Or", style: light),
+                  ),
+                ),
                 Container(
-                  padding: EdgeInsets.only(top: size.height * 0.02),
+                  padding: EdgeInsets.only(top: size.height * 0.01),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Apple")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -125,8 +129,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ),
                       ),
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Google")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -149,7 +153,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
 
   final buttonBorder = new RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
+    borderRadius: BorderRadius.circular(50.0),
     side: BorderSide(color: Colors.white, width: 2.0),
   );
 

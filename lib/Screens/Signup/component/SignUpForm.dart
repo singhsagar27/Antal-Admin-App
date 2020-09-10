@@ -42,8 +42,8 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final registerButton = MaterialButton(
-      height: 50.0,
-      minWidth: 150.0,
+      height: 54.0,
+      minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: PrimaryColor,
@@ -62,7 +62,8 @@ class MyHomePageState extends State<MyHomePage> {
       child: Text(
         "Sign Up",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(
+            fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
       ),
     );
 
@@ -83,11 +84,18 @@ class MyHomePageState extends State<MyHomePage> {
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Mobile',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _mobileHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
                   validators: [
                     FormBuilderValidators.required(
                         errorText: "Please Enter Mobile"),
+                    FormBuilderValidators.numeric(),
                   ],
                   onChanged: (val) {
                     print(val);
@@ -110,6 +118,12 @@ class MyHomePageState extends State<MyHomePage> {
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Email ID',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _emailHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
                   onChanged: (val) {
@@ -126,6 +140,7 @@ class MyHomePageState extends State<MyHomePage> {
                   validators: [
                     FormBuilderValidators.required(
                         errorText: "Please Enter Email"),
+                    FormBuilderValidators.email(),
                   ],
                 ),
                 SizedBox(
@@ -138,6 +153,12 @@ class MyHomePageState extends State<MyHomePage> {
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Password',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
                   onChanged: (val) {
@@ -166,6 +187,12 @@ class MyHomePageState extends State<MyHomePage> {
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Confirm Password',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
                   onChanged: (val) {
@@ -208,8 +235,8 @@ class MyHomePageState extends State<MyHomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Apple")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -220,8 +247,8 @@ class MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Google")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(

@@ -70,7 +70,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final signUpButton = MaterialButton(
-      height: 50.0,
+      height: 54.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -129,50 +129,58 @@ class MyHomePageState extends State<MyHomePage> {
                   top: size.height * 0.05,
                   bottom: size.height * 0.05),
               child: Column(children: <Widget>[
-                PinCodeTextField(
-                  textStyle: PinText,
-                  length: 4,
-                  textInputType: TextInputType.number,
-                  obsecureText: false,
-                  focusNode: AlwaysDisabledFocusNode(),
-                  animationType: AnimationType.fade,
-                  controller: _controller,
-                  validator: (v) {
-                    if (v.length < 4) {
-                      return "Please enter valid PIN";
-                    } else {
-                      return null;
-                    }
-                  },
-                  pinTheme: PinTheme(
-                    activeColor: Colors.blue.shade200,
-                    inactiveColor: Colors.blue.shade50,
-                    shape: PinCodeFieldShape.underline,
-                    fieldHeight: 50,
-                    fieldWidth: 40,
+                Container(
+                  width: size.width * 0.70,
+                  child: PinCodeTextField(
+                    textStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 20.0,
+                        color: PrimaryColor,
+                        fontWeight: FontWeight.w700 // bold
+                        ),
+                    length: 4,
+                    textInputType: TextInputType.number,
+                    obsecureText: false,
+                    focusNode: AlwaysDisabledFocusNode(),
+                    animationType: AnimationType.fade,
+                    controller: _controller,
+                    validator: (v) {
+                      if (v.length < 4) {
+                        return "Please enter valid PIN";
+                      } else {
+                        return null;
+                      }
+                    },
+                    pinTheme: PinTheme(
+                      activeColor: Colors.blue.shade200,
+                      inactiveColor: Colors.blue.shade50,
+                      shape: PinCodeFieldShape.underline,
+                      fieldHeight: 50,
+                      fieldWidth: 40,
+                    ),
+                    animationDuration: Duration(milliseconds: 300),
+                    enableActiveFill: false,
+                    errorAnimationController: errorController,
+                    onCompleted: (v) {
+                      print("Completed");
+                    },
+                    onChanged: (value) {
+                      print(value);
+                      setState(() {
+                        currentText = value;
+                      });
+                    },
+                    beforeTextPaste: (text) {
+                      print("Allowing to paste $text");
+                      //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                      //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                      return true;
+                    },
+                    appContext: context,
                   ),
-                  animationDuration: Duration(milliseconds: 300),
-                  enableActiveFill: false,
-                  errorAnimationController: errorController,
-                  onCompleted: (v) {
-                    print("Completed");
-                  },
-                  onChanged: (value) {
-                    print(value);
-                    setState(() {
-                      currentText = value;
-                    });
-                  },
-                  beforeTextPaste: (text) {
-                    print("Allowing to paste $text");
-                    //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                    //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                    return true;
-                  },
-                  appContext: context,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -336,7 +344,7 @@ class MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: size.height * 0.05,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -348,13 +356,6 @@ class MyHomePageState extends State<MyHomePage> {
               ]))),
     );
   }
-
-  final PinText = new TextStyle(
-      fontFamily: 'Poppins',
-      fontSize: 20.0,
-      color: PrimaryColor,
-      fontWeight: FontWeight.w700 // bold
-      );
 
   final buttonPadding =
       new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);

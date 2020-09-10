@@ -81,239 +81,242 @@ class MyHomePageState extends State<MyHomePage> {
           key: _fbKey,
           child: Padding(
               padding: new EdgeInsets.only(
-                  left: size.width * 0.10,
-                  right: size.width * 0.10,
-                  top: size.height * 0.05,
-                  bottom: size.height * 0.05),
-              child: Column(children: <Widget>[
-                PinCodeTextField(
-                  backgroundColor: PrimaryColor,
-                  textStyle: PinText,
-                  length: 4,
-                  textInputType: TextInputType.number,
-                  obsecureText: false,
-                  animationType: AnimationType.fade,
-                  controller: _controller,
-                  validator: (v) {
-                    if (v.length < 4) {
-                      return "Please enter valid OTP";
-                    } else {
-                      return null;
-                    }
-                  },
-                  focusNode: AlwaysDisabledFocusNode(),
-                  pinTheme: PinTheme(
-                    activeColor: Colors.blue.shade200,
-                    inactiveColor: Colors.blue.shade50,
-                    shape: PinCodeFieldShape.underline,
-                    fieldHeight: 50,
-                    fieldWidth: 40,
-                  ),
-                  animationDuration: Duration(milliseconds: 300),
-                  enableActiveFill: false,
-                  errorAnimationController: errorController,
-                  onCompleted: (v) {
-                    print("Completed");
-                    Navigator.of(context).push(_createDashBoardRoute());
-                  },
-                  onChanged: (value) {
-                    print(value);
-                    setState(() {
-                      currentText = value;
-                    });
-                  },
-                  beforeTextPaste: (text) {
-                    print("Allowing to paste $text");
-                    //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                    //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                    return true;
-                  },
-                  appContext: context,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  left: size.width * 0.20,
+                  right: size.width * 0.20,
+                  top: size.height * 0.03,
+                  bottom: size.height * 0.03),
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "1",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("1"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "2",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("2"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "3",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("3"),
-                          },
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "4",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("4"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "5",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("5"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "6",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("6"),
-                          },
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "7",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("7"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "8",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("8"),
-                          },
-                        ),
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "9",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("9"),
-                          },
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        NumberPad(
-                          width: 50,
-                          height: 50,
-                          text: "0",
-                          fontSize: 24,
-                          color: PrimaryColor,
-                          borderColor: Colors.white,
-                          textColor: Colors.white,
-                          onPressed: () => {
-                            incrementCounter("0"),
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Reset",
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.white,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          _controller.clear();
+                    Container(
+                      width: size.width * 0.70,
+                      child: PinCodeTextField(
+                        backgroundColor: PrimaryColor,
+                        textStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700 // bold
+                            ),
+                        length: 4,
+                        textInputType: TextInputType.number,
+                        obsecureText: false,
+                        animationType: AnimationType.fade,
+                        controller: _controller,
+                        validator: (v) {
+                          if (v.length < 4) {
+                            return "Please enter valid OTP";
+                          } else {
+                            return null;
+                          }
                         },
+                        focusNode: AlwaysDisabledFocusNode(),
+                        pinTheme: PinTheme(
+                          activeColor: Colors.blue.shade200,
+                          inactiveColor: Colors.blue.shade50,
+                          shape: PinCodeFieldShape.underline,
+                          fieldHeight: 50,
+                          fieldWidth: 50,
+                        ),
+                        animationDuration: Duration(milliseconds: 300),
+                        enableActiveFill: false,
+                        errorAnimationController: errorController,
+                        onCompleted: (v) {
+                          print("Completed");
+                          Navigator.of(context).push(_createDashBoardRoute());
+                        },
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            currentText = value;
+                          });
+                        },
+                        beforeTextPaste: (text) {
+                          print("Allowing to paste $text");
+                          //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                          //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                          return true;
+                        },
+                        appContext: context,
+                      ),
                     ),
-                  ),
-                ),
-              ]))),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "1",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("1"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "2",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("2"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "3",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("3"),
+                              },
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "4",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("4"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "5",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("5"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "6",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("6"),
+                              },
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "7",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("7"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "8",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("8"),
+                              },
+                            ),
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "9",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("9"),
+                              },
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            NumberPad(
+                              width: 50,
+                              height: 50,
+                              text: "0",
+                              fontSize: 24,
+                              color: PrimaryColor,
+                              borderColor: Colors.white,
+                              textColor: Colors.white,
+                              onPressed: () => {
+                                incrementCounter("0"),
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Reset",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              _controller.clear();
+                            },
+                        ),
+                      ),
+                    ),
+                  ]))),
     );
   }
-
-  final PinText = new TextStyle(
-      fontFamily: 'Poppins',
-      fontSize: 20.0,
-      color: Colors.white,
-      fontWeight: FontWeight.w700 // bold
-      );
 
   final buttonPadding =
       new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);

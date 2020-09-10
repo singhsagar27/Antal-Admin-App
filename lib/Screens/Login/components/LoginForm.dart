@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -54,8 +55,8 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final loginButton = MaterialButton(
-      height: 50.0,
-      minWidth: 150.0,
+      height: 54.0,
+      minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
       color: PrimaryColor,
@@ -114,7 +115,8 @@ class MyHomePageState extends State<MyHomePage> {
       child: Text(
         "Login",
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(
+            fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.normal),
       ),
     );
 
@@ -132,10 +134,18 @@ class MyHomePageState extends State<MyHomePage> {
                 FormBuilderTextField(
                   maxLines: 1,
                   obscureText: false,
+                  style: TextStyle(fontFamily: 'Poppins'),
                   attribute: 'mobile',
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Mobile',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w300,
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _mobileHasError? Icon(Icons.error, color: Colors.red): Icon(Icons.check, color: Colors.green),
                   ),
                   onChanged: (val) {
@@ -150,22 +160,32 @@ class MyHomePageState extends State<MyHomePage> {
                     return text == null ? null : text.toString().trim();
                   },
                   validators: [
-                    FormBuilderValidators.required(errorText: "Please Enter Mobile"),
+                    FormBuilderValidators.required(
+                        errorText: "Please Enter Mobile"),
                     FormBuilderValidators.numeric(),
+                    //FormBuilderValidators.maxLength(10),
+                    //FormBuilderValidators.minLength(10),
                   ],
                   controller: _usernameController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
                 ),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
                 FormBuilderTextField(
                   maxLines: 1,
+                  style: TextStyle(fontFamily: 'Poppins'),
                   obscureText: true,
                   attribute: 'password',
                   focusNode: _focusNode,
                   decoration: InputDecoration(
                     labelText: 'Password',
+                    labelStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
+                    errorStyle: TextStyle(
+                      fontFamily: 'Poppins',
+                    ),
                     //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                   ),
                   onChanged: (val) {
@@ -189,16 +209,34 @@ class MyHomePageState extends State<MyHomePage> {
                   height: size.height * 0.01,
                 ),
                 Align(
+                  alignment: Alignment.centerLeft,
+                  child: RichText(
+                    text: TextSpan(
+                      text: "Forgot Password.?",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                Align(
                   alignment: Alignment.center,
                   child: RichText(
                     text: TextSpan(
-                        text: "Or Login Using",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
-                        )),
+                      text: "Or Login Using",
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w300,
+                        color: PrimaryColor,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -222,8 +260,8 @@ class MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       MaterialButton(
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 30,
+                        height: 30,
                         onPressed: () => {print("Google")},
                         padding: EdgeInsets.all(0.0),
                         child: Image.asset(
@@ -257,7 +295,7 @@ class MyHomePageState extends State<MyHomePage> {
                           style: TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 15.0,
-                            fontWeight: FontWeight.w200,
+                            fontWeight: FontWeight.w300,
                             color: PrimaryColor,
                           ),
                         ),
@@ -286,7 +324,7 @@ class MyHomePageState extends State<MyHomePage> {
       new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0);
 
   final buttonBorder = new RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
+    borderRadius: BorderRadius.circular(27.0),
     side: BorderSide(color: Colors.white, width: 0.0),
   );
 

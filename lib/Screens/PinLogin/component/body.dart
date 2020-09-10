@@ -1,3 +1,4 @@
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Screens/Common/form_background.dart';
 import 'package:leads_in/Screens/Common/form_title.dart';
@@ -17,19 +18,35 @@ class Body extends StatelessWidget {
     return Background(
       child: Column(
         children: <Widget>[
-          CircleAvatar(
-            radius: 30.0,
-            backgroundImage: AssetImage(Assets.profile),
+          CircularProfileAvatar(
+            '',
+            child: Image.asset(
+              Assets.profile,
+              fit: BoxFit.cover,
+            ),
+            radius: 27,
             backgroundColor: Colors.transparent,
+            borderWidth: 0,
+            borderColor: Colors.transparent,
+            elevation: 5.0,
+            foregroundColor: Colors.brown.withOpacity(0.5),
+            cacheImage: true,
+            onTap: () {
+              print("Profile");
+            },
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: size.height * 0.01,
+          ),
           Align(
             alignment: Alignment.center,
             child: RichText(
               text: TextSpan(text: "Hey, Name", style: smallBold),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: size.height * 0.01,
+          ),
           Align(
             alignment: Alignment.center,
             child: RichText(
@@ -47,11 +64,11 @@ class Body extends StatelessWidget {
       fontSize: 32.0,
       color: Colors.white,
       fontWeight: FontWeight.w700 // bold
-  );
+      );
   final smallBold = new TextStyle(
       fontFamily: 'Poppins',
       fontSize: 16.0,
       color: Colors.white,
       fontWeight: FontWeight.w500 // medium
-  );
+      );
 }
