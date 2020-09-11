@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:leads_in/Screens/AddPosition/Four.dart';
-import 'package:leads_in/Screens/Dashboard/component/body.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import 'package:leads_in/Palette.dart';

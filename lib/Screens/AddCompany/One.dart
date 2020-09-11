@@ -33,11 +33,11 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
   Widget RegisterCompanyButton() {
     Size size = MediaQuery.of(context).size;
     return RaisedGradientButton(
-      height: 54.0,
+      height: 50.0,
       width: size.width * 0.8,
       gradient: LinearGradient(
         colors: [
-          Color(0xFF3186E3),
+          MainColorLight,
           MainColor,
         ],
         begin: FractionalOffset.topCenter,
@@ -361,38 +361,6 @@ class _RegisterCompanyState extends State<AddCompanyScreenOne> {
                             ],
                             valueTransformer: (value) =>
                                 value.toString().trim(),
-                          ),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
-                          FormBuilderFilterChip(
-                            attribute: 'keyProducts',
-                            decoration: const InputDecoration(
-                              labelText: 'Key Products',
-                              labelStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                              ),
-                              errorStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                            options: [
-                              FormBuilderFieldOption(
-                                  value: 'Key Product 1',
-                                  child: Text('Key Product 1')),
-                              FormBuilderFieldOption(
-                                  value: 'Key Product 2',
-                                  child: Text('Key Product 2')),
-                              FormBuilderFieldOption(
-                                  value: 'Key Product 3',
-                                  child: Text('Key Product 3')),
-                              FormBuilderFieldOption(
-                                  value: 'Key Product 4',
-                                  child: Text('Key Product 4')),
-                              FormBuilderFieldOption(
-                                  value: 'Key Product 5',
-                                  child: Text('Key Product 5')),
-                            ],
                           ),
                           SizedBox(
                             height: size.height * 0.02,

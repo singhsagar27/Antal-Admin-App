@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
-import 'package:leads_in/Screens/PinLogin/component/EnterPinForm.dart';
 import 'package:leads_in/Screens/screens.dart';
 
 void main() {
@@ -20,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: MainColor,
+        canvasColor: Colors.transparent,
       ),
       home: WelcomeScreen(),
       routes: <String, WidgetBuilder>{

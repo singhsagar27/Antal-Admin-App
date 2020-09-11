@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:leads_in/widgets/CustomAppBar.dart';
+import 'package:leads_in/widgets/RaisedGradientButton.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import 'package:leads_in/Palette.dart';
@@ -31,21 +32,46 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
   }
 
   Widget RegisterCompanyButton() {
-    return MaterialButton(
+    Size size = MediaQuery.of(context).size;
+    return RaisedGradientButton(
       height: 50.0,
-      minWidth: 150.0,
-      shape: buttonBorder,
+      width: size.width * 0.8,
+      gradient: LinearGradient(
+        colors: [
+          MainColorLight,
+          MainColor,
+        ],
+        begin: FractionalOffset.topCenter,
+        end: FractionalOffset.bottomCenter,
+      ),
       //minWidth: MediaQuery.of(context).size.width,
-      color: MainColor,
-      textColor: Colors.white,
-      padding: buttonPadding,
+
       onPressed: () {
         Navigator.of(context).push(_createRegisterCompanyRoute());
       },
-      child: Text(
-        "Save and Next",
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 16),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            "Save & Next",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.normal),
+          ),
+          SizedBox(
+            width: size.width * 0.03,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -309,22 +335,31 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                             SizedBox(
                               height: size.height * 0.02,
                             ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: RichText(
+                                text: TextSpan(
+                                    text: "Location",
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 15.0,
+                                      color: MainColor,
+                                    )),
+                              ),
+                            ),
                             FormBuilderTextField(
                               maxLines: 1,
                               obscureText: false,
                               attribute: 'streetOne',
                               decoration: InputDecoration(
-                                labelText: 'Location',
+                                labelText: 'Street 1',
                                 labelStyle: TextStyle(
                                   fontFamily: 'Poppins',
                                 ),
                                 errorStyle: TextStyle(
                                   fontFamily: 'Poppins',
                                 ),
-                                hintText: "Street 1",
-                                hintStyle: TextStyle(
-                                  fontFamily: 'Poppins',
-                                ),
+
                                 //suffixIcon: _passwordHasError ? Icon(Icons.error, color: Colors.red) : Icon(Icons.check, color: Colors.green),
                               ),
                               validators: [
@@ -338,10 +373,11 @@ class _RegisterCompanyState extends State<AddCompanyScreenTwo> {
                               obscureText: false,
                               attribute: 'streetTwo',
                               decoration: InputDecoration(
-                                hintText: "Street 2",
-                                hintStyle: TextStyle(
+                                labelText: 'Street 2',
+                                labelStyle: TextStyle(
                                   fontFamily: 'Poppins',
                                 ),
+
                                 errorStyle: TextStyle(
                                   fontFamily: 'Poppins',
                                 ),

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:leads_in/Screens/Dashboard/component/body.dart';
 
 import 'package:leads_in/Palette.dart';
 import 'package:leads_in/Screens/screens.dart';
@@ -360,7 +359,8 @@ class _RegisterCompanyState extends State<AddRecruiterScreenThree> {
 
   Route _createRegisterCompanyRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => Dashboard(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          DashboardScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(0.0, 1.0);
         var end = Offset.zero;

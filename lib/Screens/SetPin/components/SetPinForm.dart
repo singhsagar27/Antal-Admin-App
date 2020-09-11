@@ -70,7 +70,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final signUpButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -97,7 +97,7 @@ class MyHomePageState extends State<MyHomePage> {
         }
       },
       child: Text(
-        "Sign Up",
+        "Set Pin",
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 16),
       ),
@@ -362,10 +362,10 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
   final buttonBorder1 = new CircleBorder(
-    side: BorderSide(color: Colors.white, width: 2.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
 
   Route _createRegisterRoute() {

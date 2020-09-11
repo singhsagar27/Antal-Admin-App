@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../Palette.dart';
-import '../../assets.dart';
-import '../screens.dart';
+import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/screens.dart';
+import 'package:leads_in/assets.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -28,7 +27,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     final loginButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -49,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     final registerButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,

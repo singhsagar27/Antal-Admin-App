@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 const MainColor = Color(0xFF00243F);
+const MainColorLight = Color(0xFF003863);
 const Black = Color(0xFF000000);
 const PrimaryDarkColor = Color(0xFF252427);
 const ErroColor = Color(0xFF808080);

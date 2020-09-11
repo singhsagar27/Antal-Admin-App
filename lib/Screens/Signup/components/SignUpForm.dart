@@ -42,7 +42,7 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final registerButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
@@ -316,7 +316,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
 
   Route _createLoginRoute() {

@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
-
-
-class ProfileScreen extends StatefulWidget{
-
+class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }

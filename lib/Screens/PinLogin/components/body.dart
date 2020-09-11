@@ -42,7 +42,7 @@ class Body extends StatelessWidget {
             alignment: Alignment.center,
             child: RichText(
               text: TextSpan(
-                text: "Hey, Name",
+                text: "Hey, Bob",
                 style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 16.0,

@@ -132,7 +132,7 @@ class ProfileListState extends State<ProfileList> {
                     padding: EdgeInsets.only(top: 10),
                     child: RichText(
                       text: TextSpan(
-                          text: "My name",
+                          text: "Bob Jr",
                           style: TextStyle(
                             color: MainColor,
                             fontSize: 32,
@@ -145,7 +145,7 @@ class ProfileListState extends State<ProfileList> {
                     padding: EdgeInsets.only(top: 5),
                     child: RichText(
                       text: TextSpan(
-                          text: "My profession",
+                          text: "Builer",
                           style: TextStyle(
                             color: PrimaryDarkColor,
                             fontSize: 16,
@@ -193,7 +193,7 @@ class ProfileListState extends State<ProfileList> {
                                     flex: 1,
                                     child: RichText(
                                       text: TextSpan(
-                                        text: "Officer Name",
+                                        text: "John Cena",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           color: Colors.blue,
@@ -228,7 +228,7 @@ class ProfileListState extends State<ProfileList> {
                                     flex: 1,
                                     child: RichText(
                                       text: TextSpan(
-                                        text: "Location Address",
+                                        text: "Mumbai",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           color: Colors.blue,

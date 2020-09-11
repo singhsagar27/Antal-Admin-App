@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
 class FPOtpVerificationScreen extends StatefulWidget {
   @override

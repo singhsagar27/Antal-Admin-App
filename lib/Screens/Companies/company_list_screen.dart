@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
-
-
-class CompanyListScreen extends StatefulWidget{
-
+class CompanyListScreen extends StatefulWidget {
   @override
   _CompanyListScreenState createState() => _CompanyListScreenState();
 }
