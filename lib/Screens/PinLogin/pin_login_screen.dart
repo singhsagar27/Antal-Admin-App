@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
-
-
-class PinLoginScreen extends StatefulWidget{
-
+class PinLoginScreen extends StatefulWidget {
   @override
   _PinLoginScreenState createState() => _PinLoginScreenState();
 }

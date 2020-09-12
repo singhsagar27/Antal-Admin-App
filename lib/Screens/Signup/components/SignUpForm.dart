@@ -42,11 +42,11 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final registerButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -223,7 +223,7 @@ class MyHomePageState extends State<MyHomePage> {
                           fontFamily: 'Poppins',
                           fontSize: 15.0,
                           fontWeight: FontWeight.w200,
-                          color: PrimaryColor,
+                          color: MainColor,
                         )),
                   ),
                 ),
@@ -286,7 +286,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w200,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
                             ),
                             TextSpan(
@@ -295,7 +295,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w500,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
@@ -316,7 +316,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
 
   Route _createLoginRoute() {

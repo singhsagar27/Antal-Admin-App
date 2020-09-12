@@ -41,34 +41,40 @@ class Body extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: RichText(
-              text: TextSpan(text: "Hey, Name", style: smallBold),
+              text: TextSpan(
+                text: "Hey, Bob",
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500 // medium
+                    ),
+              ),
             ),
           ),
           SizedBox(
-            height: size.height * 0.01,
+            height: size.height * 0.003,
           ),
           Align(
             alignment: Alignment.center,
             child: RichText(
-              text: TextSpan(text: "Guten Tag!", style: bigBold),
+              text: TextSpan(
+                text: "Guten Tag!",
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 32.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700 // bold
+                    ),
+              ),
             ),
+          ),
+          SizedBox(
+            height: size.height * 0.003,
           ),
           EnterPin(),
         ],
       ),
     );
   }
-
-  final bigBold = new TextStyle(
-      fontFamily: 'Poppins',
-      fontSize: 32.0,
-      color: Colors.white,
-      fontWeight: FontWeight.w700 // bold
-      );
-  final smallBold = new TextStyle(
-      fontFamily: 'Poppins',
-      fontSize: 16.0,
-      color: Colors.white,
-      fontWeight: FontWeight.w500 // medium
-      );
 }

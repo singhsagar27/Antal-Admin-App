@@ -34,7 +34,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -125,7 +125,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                       selectedStepColorIn: Colors.white,
                       doneStepColor: Colors.white,
                       unselectedStepColorOut: Colors.white,
-                      unselectedStepColorIn: PrimaryColor,
+                      unselectedStepColorIn: MainColor,
                       doneLineColor: Colors.white,
                       undoneLineColor: Colors.grey,
                       isHorizontal: true,
@@ -186,7 +186,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -200,9 +200,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -219,7 +219,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -233,9 +233,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -252,7 +252,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -266,9 +266,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -285,7 +285,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -299,9 +299,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -318,7 +318,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -332,9 +332,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -351,7 +351,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -365,9 +365,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -384,7 +384,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -398,9 +398,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -417,7 +417,7 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -431,9 +431,9 @@ class _RegisterCompanyState extends State<AddPositionScreenTwo> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,

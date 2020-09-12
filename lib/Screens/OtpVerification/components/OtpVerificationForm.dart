@@ -6,8 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:leads_in/Palette.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../assets.dart';
-import '../../screens.dart';
+import 'package:leads_in/Screens/screens.dart';
 
 class OtpVerificationForm extends StatelessWidget {
   OtpVerificationForm({
@@ -64,11 +63,11 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final otpVerifyButton = MaterialButton(
-      height: 50.0,
+      height: 48.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -168,7 +167,7 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w200,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
                             ),
                             TextSpan(
@@ -177,13 +176,9 @@ class MyHomePageState extends State<MyHomePage> {
                                 fontFamily: 'Poppins',
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w500,
-                                color: PrimaryColor,
+                                color: MainColor,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.of(context)
-                                      .push(_createSignUpRoute());
-                                },
+                              recognizer: TapGestureRecognizer()..onTap = () {},
                             )
                           ],
                         ),
@@ -206,7 +201,7 @@ class MyHomePageState extends State<MyHomePage> {
   final PinText = new TextStyle(
       fontFamily: 'Poppins',
       fontSize: 20.0,
-      color: PrimaryColor,
+      color: MainColor,
       fontWeight: FontWeight.w700 // bold
       );
 
@@ -215,7 +210,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
 
   Route _createSignUpRoute() {

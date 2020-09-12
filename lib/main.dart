@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
-import 'package:leads_in/Screens/PinLogin/component/EnterPinForm.dart';
 import 'package:leads_in/Screens/screens.dart';
 
 void main() {
@@ -11,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        scaffoldBackgroundColor: PrimaryColor,
+        scaffoldBackgroundColor: MainColor,
+        canvasColor: Colors.transparent,
       ),
       home: WelcomeScreen(),
       routes: <String, WidgetBuilder>{

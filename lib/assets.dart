@@ -23,6 +23,8 @@ class Assets {
   static const String iconTrackLead = '${_images}dashboard.png';
   static const String iconLink = '${_images}link.png';
   static const String iconPie = '${_images}pie.png';
+  static const String iconPerson = '${_images}person.png';
+  static const String iconCancel = '${_images}cancel.png';
 
   //static const String apple = '${_images}apple.png';
   static const String otherPageLogo = '${_images}other_page_logo.png';

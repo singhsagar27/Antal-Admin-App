@@ -70,11 +70,11 @@ class MyHomePageState extends State<MyHomePage> {
     Size size = MediaQuery.of(context).size;
 
     final signUpButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -97,7 +97,7 @@ class MyHomePageState extends State<MyHomePage> {
         }
       },
       child: Text(
-        "Sign Up",
+        "Set Pin",
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 16),
       ),
@@ -135,7 +135,7 @@ class MyHomePageState extends State<MyHomePage> {
                     textStyle: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 20.0,
-                        color: PrimaryColor,
+                        color: MainColor,
                         fontWeight: FontWeight.w700 // bold
                         ),
                     length: 4,
@@ -196,7 +196,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "1",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("1"),
                           },
@@ -207,7 +207,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "2",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("2"),
                           },
@@ -218,7 +218,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "3",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("3"),
                           },
@@ -235,7 +235,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "4",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("4"),
                           },
@@ -246,7 +246,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "5",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("5"),
                           },
@@ -257,7 +257,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "6",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("6"),
                           },
@@ -274,7 +274,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "7",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("7"),
                           },
@@ -285,7 +285,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "8",
                           color: Colors.white,
                           fontSize: 24,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("8"),
                           },
@@ -296,7 +296,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "9",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("9"),
                           },
@@ -313,7 +313,7 @@ class MyHomePageState extends State<MyHomePage> {
                           text: "0",
                           fontSize: 24,
                           color: Colors.white,
-                          textColor: PrimaryColor,
+                          textColor: MainColor,
                           onPressed: () => {
                             incrementCounter("0"),
                           },
@@ -334,7 +334,7 @@ class MyHomePageState extends State<MyHomePage> {
                         fontFamily: 'Poppins',
                         fontSize: 15.0,
                         fontWeight: FontWeight.w300,
-                        color: PrimaryColor,
+                        color: MainColor,
                       ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
@@ -362,10 +362,10 @@ class MyHomePageState extends State<MyHomePage> {
 
   final buttonBorder = new RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(25.0),
-    side: BorderSide(color: Colors.white, width: 0.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
   final buttonBorder1 = new CircleBorder(
-    side: BorderSide(color: Colors.white, width: 2.0),
+    side: BorderSide(color: Colors.transparent, width: 0.0),
   );
 
   Route _createRegisterRoute() {

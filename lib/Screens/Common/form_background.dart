@@ -12,11 +12,18 @@ class FormBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: const Radius.circular(30.0),
-            topRight: const Radius.circular(30.0),
-          )),
+        boxShadow: const <BoxShadow>[
+          BoxShadow(
+            blurRadius: 20.0,
+            color: Colors.black,
+          )
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(30.0),
+          topRight: const Radius.circular(30.0),
+        ),
+      ),
       child: child,
     );
   }

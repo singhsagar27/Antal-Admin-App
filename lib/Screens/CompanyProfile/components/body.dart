@@ -334,7 +334,7 @@ class CompanyProfileState extends State<CompanyProfile> {
                                     text: "Emergency Contact",
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
-                                      color: PrimaryColor,
+                                      color: MainColor,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -365,7 +365,7 @@ class CompanyProfileState extends State<CompanyProfile> {
                                 text: "Change Password",
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: PrimaryColor,
+                                  color: MainColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -381,7 +381,7 @@ class CompanyProfileState extends State<CompanyProfile> {
                     minWidth: 150.0,
                     shape: buttonBorder,
                     //minWidth: MediaQuery.of(context).size.width,
-                    color: PrimaryColor,
+                    color: MainColor,
                     textColor: Colors.white,
                     padding: buttonPadding,
                     onPressed: () {

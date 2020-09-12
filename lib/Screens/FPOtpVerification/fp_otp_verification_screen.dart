@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 
-class SignUpScreen extends StatefulWidget {
+class FPOtpVerificationScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _FPOtpVerificationScreenState createState() =>
+      _FPOtpVerificationScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _FPOtpVerificationScreenState extends State<FPOtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

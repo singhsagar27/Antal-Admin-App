@@ -2,8 +2,10 @@ export 'Welcome/welcome_screen.dart';
 export 'Login/login_screen.dart';
 export 'Signup/sign_up_screen.dart';
 export 'OtpVerification/otp_verification_screen.dart';
+export 'FPOtpVerification/fp_otp_verification_screen.dart';
 export 'SetPin/set_pin_screen.dart';
 export 'PinLogin/pin_login_screen.dart';
+export 'ForgotPassword/forgot_password_screen.dart';
 
 export 'AddRecruiter/One.dart';
 export 'AddRecruiter/Two.dart';
