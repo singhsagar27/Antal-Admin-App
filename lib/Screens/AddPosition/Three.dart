@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:leads_in/Screens/AddPosition/Four.dart';
-import 'package:leads_in/Screens/Dashboard/component/body.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
 import 'package:leads_in/Palette.dart';
@@ -36,7 +35,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -127,7 +126,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                       selectedStepColorIn: Colors.white,
                       doneStepColor: Colors.white,
                       unselectedStepColorOut: Colors.white,
-                      unselectedStepColorIn: PrimaryColor,
+                      unselectedStepColorIn: MainColor,
                       doneLineColor: Colors.white,
                       undoneLineColor: Colors.grey,
                       isHorizontal: true,
@@ -188,7 +187,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),
@@ -214,7 +213,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),
@@ -240,7 +239,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),
@@ -266,7 +265,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),
@@ -292,7 +291,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),
@@ -318,7 +317,7 @@ class _RegisterCompanyState extends State<AddPositionScreenThree> {
                                         fontFamily: 'Poppins',
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w200,
-                                        color: PrimaryColor,
+                                        color: MainColor,
                                       )),
                                 ),
                               ),

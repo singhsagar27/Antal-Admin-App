@@ -87,14 +87,15 @@ class MyHomePageState extends State<MyHomePage> {
                   bottom: size.height * 0.03),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
                       width: size.width * 0.70,
                       child: PinCodeTextField(
-                        backgroundColor: PrimaryColor,
+                        backgroundColor: MainColor,
                         textStyle: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 20.0,
+                            fontSize: 24.0,
                             color: Colors.white,
                             fontWeight: FontWeight.w700 // bold
                             ),
@@ -156,7 +157,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "1",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -168,7 +169,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "2",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -180,7 +181,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "3",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -198,7 +199,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "4",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -210,7 +211,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "5",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -222,7 +223,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "6",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -240,7 +241,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "7",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -252,7 +253,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "8",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -264,7 +265,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "9",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {
@@ -282,7 +283,7 @@ class MyHomePageState extends State<MyHomePage> {
                               height: 50,
                               text: "0",
                               fontSize: 24,
-                              color: PrimaryColor,
+                              color: MainColor,
                               borderColor: Colors.white,
                               textColor: Colors.white,
                               onPressed: () => {

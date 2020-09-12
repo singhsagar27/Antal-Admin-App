@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
-
-
-class CompanyProfileScreen extends StatefulWidget{
-
+class CompanyProfileScreen extends StatefulWidget {
   @override
   _CompanyProfileScreenState createState() => _CompanyProfileScreenState();
 }

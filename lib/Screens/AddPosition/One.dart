@@ -6,7 +6,6 @@ import 'package:leads_in/Screens/screens.dart';
 import 'package:leads_in/assets.dart';
 import 'package:leads_in/widgets/StepsIndicator.dart';
 
-
 class AddPositionScreenOne extends StatefulWidget {
   AddPositionScreenOne({
     Key key,
@@ -34,7 +33,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
       minWidth: 150.0,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: PrimaryColor,
+      color: MainColor,
       textColor: Colors.white,
       padding: buttonPadding,
       onPressed: () {
@@ -125,7 +124,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                         selectedStepColorIn: Colors.white,
                         doneStepColor: Colors.white,
                         unselectedStepColorOut: Colors.white,
-                        unselectedStepColorIn: PrimaryColor,
+                        unselectedStepColorIn: MainColor,
                         doneLineColor: Colors.white,
                         undoneLineColor: Colors.grey,
                         isHorizontal: true,
@@ -186,7 +185,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -200,9 +199,9 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   ],
                                   items: genderOptions
                                       .map((gender) => DropdownMenuItem(
-                                    value: gender,
-                                    child: Text('$gender'),
-                                  ))
+                                            value: gender,
+                                            child: Text('$gender'),
+                                          ))
                                       .toList(),
                                   // isExpanded: false,
                                   allowClear: true,
@@ -219,7 +218,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -245,7 +244,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -266,12 +265,13 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                   alignment: Alignment.centerLeft,
                                   child: RichText(
                                     text: TextSpan(
-                                        text: "Excepted Educational Qualification",
+                                        text:
+                                            "Excepted Educational Qualification",
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -297,7 +297,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -323,7 +323,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -349,7 +349,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),
@@ -375,7 +375,7 @@ class _RegisterCompanyState extends State<AddPositionScreenOne> {
                                           fontFamily: 'Poppins',
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.w200,
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                         )),
                                   ),
                                 ),

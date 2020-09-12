@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../Palette.dart';
-import '../../assets.dart';
-import '../screens.dart';
+import 'package:leads_in/Palette.dart';
+import 'package:leads_in/Screens/screens.dart';
+import 'package:leads_in/assets.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -28,12 +27,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     final loginButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: _selected1 ? Colors.white : PrimaryColor,
-      textColor: _selected1 ? PrimaryColor : Colors.white,
+      color: _selected1 ? Colors.white : MainColor,
+      textColor: _selected1 ? MainColor : Colors.white,
       padding: buttonPadding,
       onPressed: () => {
         setState(() => _selected1 = !_selected1),
@@ -49,12 +48,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     final registerButton = MaterialButton(
-      height: 54.0,
+      height: 48.0,
       minWidth: size.width * 0.4,
       shape: buttonBorder,
       //minWidth: MediaQuery.of(context).size.width,
-      color: _selected2 ? Colors.white : PrimaryColor,
-      textColor: _selected2 ? PrimaryColor : Colors.white,
+      color: _selected2 ? Colors.white : MainColor,
+      textColor: _selected2 ? MainColor : Colors.white,
       padding: buttonPadding,
       onPressed: () => {
         setState(() => _selected2 = !_selected2),
@@ -70,17 +69,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
 
     return new Container(
-        color: PrimaryColor,
+        color: MainColor,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: Container(
-                width: size.width * 6,
-                height: size.height * 2.5,
+                width: size.width * 0.8,
+                height: size.height * 0.8,
                 decoration: const BoxDecoration(color: Colors.transparent),
-                child: Image.asset(Assets.splashScreenLogo),
+                child: Image.asset(
+                  Assets.splashScreenLogo,
+                ),
               ),
               flex: 1,
             ),

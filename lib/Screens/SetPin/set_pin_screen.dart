@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'component/body.dart';
+import 'components/body.dart';
 
-
-
-class SetPinScreen extends StatefulWidget{
-
+class SetPinScreen extends StatefulWidget {
   @override
   _SetPinScreenState createState() => _SetPinScreenState();
 }

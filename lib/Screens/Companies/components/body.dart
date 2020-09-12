@@ -291,7 +291,7 @@ class CompanyListState extends State<CompanyList> {
                                       text: TextSpan(
                                         text: "Company Name",
                                         style: TextStyle(
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                           fontFamily: 'Poppins',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -337,7 +337,7 @@ class CompanyListState extends State<CompanyList> {
                                       text: TextSpan(
                                         text: "Company Location",
                                         style: TextStyle(
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                           fontFamily: 'Poppins',
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500,
@@ -365,7 +365,7 @@ class CompanyListState extends State<CompanyList> {
                                           TextSpan(
                                             text: "\$10000",
                                             style: TextStyle(
-                                              color: PrimaryColor,
+                                              color: MainColor,
                                               fontFamily: 'Poppins',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w300,
@@ -380,7 +380,7 @@ class CompanyListState extends State<CompanyList> {
                                       text: TextSpan(
                                         text: "90%",
                                         style: TextStyle(
-                                          color: PrimaryColor,
+                                          color: MainColor,
                                           fontFamily: 'Poppins',
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500,

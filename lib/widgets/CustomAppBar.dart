@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leads_in/Palette.dart';
@@ -17,7 +15,7 @@ class CustomAppBar extends PreferredSize {
   Widget build(BuildContext context) {
     return Container(
       height: preferredSize.height,
-      color: PrimaryColor,
+      color: MainColor,
       alignment: Alignment.center,
       child: child,
     );

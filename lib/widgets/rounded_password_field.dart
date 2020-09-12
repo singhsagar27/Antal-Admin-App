@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../Palette.dart';
 import 'text_field_container.dart';
 
-
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   const RoundedPasswordField({
@@ -17,7 +16,7 @@ class RoundedPasswordField extends StatelessWidget {
       child: TextField(
         obscureText: true,
         onChanged: onChanged,
-        cursorColor: PrimaryColor,
+        cursorColor: MainColor,
         decoration: InputDecoration(
           hintText: "Password",
           icon: Icon(
